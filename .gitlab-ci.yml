@@ -1,6 +1,6 @@
 image: node:9.3.0
 
-pages:
+deploy:
   stage: deploy
   script:
   - npm install

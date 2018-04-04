@@ -1,0 +1,24 @@
+%App-logo{
+  height: 40px;
+  width: 80px;
+}
+
+.App-logo-left {
+  @extend %App-logo;
+  animation: App-logo-spin-left infinite 5s linear;
+}
+
+.App-logo-right {
+  @extend %App-logo;
+  animation: App-logo-spin-right infinite 5s linear;
+}
+
+@keyframes App-logo-spin-left {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes App-logo-spin-right {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}

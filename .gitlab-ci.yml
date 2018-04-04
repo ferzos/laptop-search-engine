@@ -1,0 +1,16 @@
+image: node:9.3.0
+
+pages:
+  stage: deploy
+  script:
+  - npm install
+  - npm run build
+  - rm -rf public
+  - mv build public
+  - git pull https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+  - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+  artifacts:
+    paths:
+    - public # mandatory, other folder won't work
+  only:
+  - master # or dev, the branch you want to publish

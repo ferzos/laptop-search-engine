@@ -1,0 +1,7 @@
+.landing {
+  background: linear-gradient(to bottom, $color-dark-primary , $color-primary);
+  
+  .ui.fluid.container {
+    min-height: 46rem;
+  }
+}

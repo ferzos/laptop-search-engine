@@ -5,7 +5,7 @@ import logo from '../assets/logo.svg';
 import Heading from '../components/Heading';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchText } from '../actions/app';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
   render() {
@@ -32,6 +32,24 @@ class App extends Component {
         >
           {this.props.app.copyrightText}{' '}
           <FontAwesomeIcon icon={Icons.faCopyright} />
+          <Card>
+            <Image src={logo} />
+            <Card.Content>
+              <Card.Header>Matthew</Card.Header>
+              <Card.Meta>
+                <span className="date">Joined in 2015</span>
+              </Card.Meta>
+              <Card.Description>
+                Matthew is a musician living in Nashville.
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <a>
+                <Icon name="user" />
+                22 Friends
+              </a>
+            </Card.Content>
+          </Card>
         </div>
       </div>
     );

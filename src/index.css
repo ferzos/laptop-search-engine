@@ -1,17 +1,12 @@
 .color-primary {
-  color: #2196f4;
+  color: #00bcd4;
 }
 
 .color-secondary {
-  color: #ff9800;
-}
-
-.color-background {
-  color: #ffffff;
+  color: #bdbdbd;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   font-size: 100%;
 }
 
@@ -376,34 +371,9 @@ a {
   cursor: pointer;
 }
 
-.App-logo-left,
-.App-logo-right {
-  height: 40px;
-  width: 80px;
+.landing {
+  background: linear-gradient(to bottom, #0097a7, #00bcd4);
 }
-
-.App-logo-left {
-  animation: App-logo-spin-left infinite 5s linear;
-}
-
-.App-logo-right {
-  animation: App-logo-spin-right infinite 5s linear;
-}
-
-@keyframes App-logo-spin-left {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes App-logo-spin-right {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+.landing .ui.fluid.container {
+  min-height: 46rem;
 }

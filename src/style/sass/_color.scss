@@ -1,8 +1,8 @@
 // Insert your color here
 
-$color-primary : #2196F4;
-$color-secondary: #FF9800;
-$color-background: #FFFFFF;
+$color-dark-primary : #0097A7;
+$color-primary : #00BCD4;
+$color-secondary: #BDBDBD;
 
 .color-primary{
   color: $color-primary;
@@ -10,8 +10,4 @@ $color-background: #FFFFFF;
 
 .color-secondary{
   color: $color-secondary;
-}
-
-.color-background{
-  color: $color-background;
 }

@@ -1,7 +1,18 @@
 .landing {
-  background: linear-gradient(to bottom, $color-dark-primary , $color-primary);
-  
-  .ui.fluid.container {
-    min-height: 46rem;
+  .segment {
+    min-height: 100vh;
+    padding: 1em 0em;
+    background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
+
+    .menu{
+      border: 0 !important;
+    }
+    
+    .container {
+      .button {
+        background-color: $color-secondary !important;
+        color: #FFFFFF;
+      }
+    }
   }
 }

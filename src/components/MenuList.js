@@ -3,14 +3,16 @@ import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
 export default class MenuList extends Component {
-  render = () => (
-    <div className="menu-list">
-      <Menu.Item as={NavLink} exact to="/">
-        Beranda
+  render() {
+    const menus = [
+      { route: '/', name: 'Beranda' },
+      { route: '/about', name: 'Tentang' },
+    ];
+
+    return menus.map(({ route, name }) => (
+      <Menu.Item as={NavLink} exact to={route}>
+        {name}
       </Menu.Item>
-      <Menu.Item as={NavLink} exact to="/about">
-        Tentang
-      </Menu.Item>
-    </div>
-  );
+    ));
+  }
 }

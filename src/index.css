@@ -382,7 +382,6 @@ a {
 .landing .segment:nth-child(1) {
   min-height: 100vh;
   padding: 1em 0em;
-  padding-bottom: 3em;
   background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
 }
 .landing .segment:nth-child(1) .menu {
@@ -404,4 +403,15 @@ a {
 }
 .landing .idea p {
   text-align: justify;
+}
+
+.landing .filter {
+  padding: 3em 0em !important;
+  background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
+}
+.landing .filter h3 {
+  color: #ffffff !important;
+}
+.landing .filter .icon {
+  color: #00bcd4;
 }

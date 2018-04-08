@@ -2,7 +2,6 @@
   .segment:nth-child(1){
     min-height: 100vh;
     padding: 1em 0em;
-    padding-bottom: 3em;
     background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
 
     .menu{
@@ -22,10 +21,22 @@
       }
     }
   }
+  
   .idea{
     padding: 3em 0em !important;
     p {
       text-align: justify;
+    }
+  }
+
+  .filter{
+    padding: 3em 0em !important;
+    background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
+    h3{
+      color: #FFFFFF !important;
+    }
+    .icon{
+      color: $color-primary;
     }
   }
 }

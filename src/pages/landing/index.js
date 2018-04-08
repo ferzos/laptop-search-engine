@@ -6,6 +6,7 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 import ResponsiveContainer from './ResponsiveContainer';
+import LandingCard from '../../components/landing/LandingCard';
 
 class Landing extends Component {
   render = () => (
@@ -17,7 +18,7 @@ class Landing extends Component {
               <Grid.Column width={14}>
                 <Header
                   textAlign="center"
-                  content="Apa itu Mesin Pencari Laptop?"
+                  content="Apa Itu Mesin Pencari Laptop?"
                   className="text-xl"
                   as="h3"
                 />
@@ -57,6 +58,22 @@ class Landing extends Component {
                     berikut.
                   </NavLink>
                 </p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+        <Segment vertical className="filter">
+          <Grid centered container stackable verticalAlign="middle">
+            <Grid.Row>
+              <Grid.Column width={14}>
+                <Header
+                  textAlign="center"
+                  content="Cari Laptopmu Berdasarkan"
+                  className="text-xl"
+                  as="h3"
+                />
+                <br />
+                <LandingCard />
               </Grid.Column>
             </Grid.Row>
           </Grid>

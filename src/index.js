@@ -7,7 +7,7 @@ import store from './store';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
-import Landing from './pages/landing/Landing';
+import Landing from './pages/landing';
 
 const app = document.getElementById('app');
 

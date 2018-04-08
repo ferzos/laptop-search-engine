@@ -1,28 +1,28 @@
 body{
   // font-family: 'Roboto', sans-serif;
-  font-size: 100%;
+  font-size: 100% !important;
 }
 
 .text-xl{
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
-.text-large{
-  font-size: 1.125rem;
+.text-lg{
+  font-size: 1.125rem !important;
 }
 
 .text-md{
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 .text-sm{
-  font-size: 0.8125rem;
+  font-size: 0.8125rem !important;
 }
 
 .text-xs{
-  font-size: 0.625rem;
+  font-size: 0.625rem !important;
 }
 
 .text-normal{
-  font-weight: normal;
+  font-weight: normal !important;
 }

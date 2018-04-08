@@ -6,11 +6,12 @@ export default class MenuList extends Component {
   render() {
     const menus = [
       { route: '/', name: 'Beranda' },
+      { route: '/contact', name: 'Kontak' },
       { route: '/about', name: 'Tentang' },
     ];
 
     return menus.map(({ route, name }) => (
-      <Menu.Item as={NavLink} exact to={route}>
+      <Menu.Item key={route} as={NavLink} exact to={route}>
         {name}
       </Menu.Item>
     ));

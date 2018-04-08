@@ -2,12 +2,12 @@
 
 $color-dark-primary : #0097A7;
 $color-primary : #00BCD4;
-$color-secondary: #BDBDBD;
+$color-secondary: #FF5252;
 
 .color-primary{
-  color: $color-primary;
+  color: $color-primary !important;
 }
 
 .color-secondary{
-  color: $color-secondary;
+  color: $color-secondary !important;
 }

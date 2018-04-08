@@ -1,37 +1,37 @@
 .color-primary {
-  color: #00bcd4;
+  color: #00bcd4 !important;
 }
 
 .color-secondary {
-  color: #bdbdbd;
+  color: #ff5252 !important;
 }
 
 body {
-  font-size: 100%;
+  font-size: 100% !important;
 }
 
 .text-xl {
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
-.text-large {
-  font-size: 1.125rem;
+.text-lg {
+  font-size: 1.125rem !important;
 }
 
 .text-md {
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 .text-sm {
-  font-size: 0.8125rem;
+  font-size: 0.8125rem !important;
 }
 
 .text-xs {
-  font-size: 0.625rem;
+  font-size: 0.625rem !important;
 }
 
 .text-normal {
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -372,18 +372,36 @@ a {
 
 button,
 a {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .mb-0 {
   margin-bottom: 0 !important;
 }
 
-.landing .segment {
+.landing .segment:nth-child(1) {
   min-height: 100vh;
   padding: 1em 0em;
+  padding-bottom: 3em;
   background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
 }
-.landing .segment .menu {
+.landing .segment:nth-child(1) .menu {
   border: 0 !important;
+}
+.landing .segment:nth-child(1) .fixed.menu {
+  background-color: #0097a7;
+}
+.landing .segment:nth-child(1) .fixed.menu .container .item {
+  color: #ffffff;
+  border: 0 !important;
+}
+.landing .segment:nth-child(1) .fixed.menu .container .item::before {
+  display: none;
+}
+
+.landing .idea {
+  padding: 3em 0em !important;
+}
+.landing .idea p {
+  text-align: justify;
 }

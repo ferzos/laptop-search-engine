@@ -4,9 +4,9 @@ import { Responsive } from 'semantic-ui-react';
 import MobileSidebar from '../../components/MobileSidebar';
 
 class MobileContainer extends Component {
-  render = () => (
+  render = ({ children } = this.props) => (
     <Responsive {...Responsive.onlyMobile}>
-      <MobileSidebar />
+      <MobileSidebar>{children}</MobileSidebar>
     </Responsive>
   );
 }

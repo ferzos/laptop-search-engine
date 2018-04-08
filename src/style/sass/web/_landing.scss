@@ -1,11 +1,31 @@
-.landing {
-  .segment {
+.landing{
+  .segment:nth-child(1){
     min-height: 100vh;
     padding: 1em 0em;
+    padding-bottom: 3em;
     background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
 
     .menu{
       border: 0 !important;
+    }
+
+    .fixed.menu{
+      background-color: $color-dark-primary;
+      .container {
+        .item {
+          color: #FFFFFF;
+          border: 0 !important;
+        }
+        .item::before {
+          display: none;
+        }
+      }
+    }
+  }
+  .idea{
+    padding: 3em 0em !important;
+    p {
+      text-align: justify;
     }
   }
 }

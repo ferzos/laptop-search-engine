@@ -11,7 +11,7 @@ class LandingHeader extends Component {
         className="text-normal mb-0"
         style={{
           fontSize: mobile ? '2em' : '4em',
-          marginTop: mobile ? '0em' : '1.5em',
+          marginTop: mobile ? '1em' : '1.5em',
         }}
       >
         <Icon name="laptop" />
@@ -23,14 +23,16 @@ class LandingHeader extends Component {
         inverted
         className="text-normal"
         style={{
-          fontSize: mobile ? '1.5em' : '1.7em',
+          fontSize: mobile ? '1em' : '1.7em',
           marginTop: mobile ? '0.5em' : '1.5em',
         }}
       />
       <Button
+        inverted
         size="huge"
         style={{
-          marginTop: mobile ? '0em' : '1.5em',
+          fontSize: mobile ? '1em' : '1.5em',
+          marginTop: mobile ? '0.5em' : '1.5em',
         }}
       >
         Mulai

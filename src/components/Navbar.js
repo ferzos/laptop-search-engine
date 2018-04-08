@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { Menu, Container } from 'semantic-ui-react';
 
+import MenuList from './MenuList';
 export default class Navbar extends Component {
   render = () => (
     <Menu
@@ -12,12 +12,7 @@ export default class Navbar extends Component {
       size="large"
     >
       <Container>
-        <Menu.Item as={NavLink} exact to="/">
-          Beranda
-        </Menu.Item>
-        <Menu.Item as={NavLink} exact to="/about">
-          Tentang
-        </Menu.Item>
+        <MenuList />
       </Container>
     </Menu>
   );

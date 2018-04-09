@@ -34,6 +34,10 @@ body {
   font-weight: normal !important;
 }
 
+.text-bold {
+  font-weight: bold !important;
+}
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -379,6 +383,20 @@ a {
   margin-bottom: 0 !important;
 }
 
+.fixed.menu {
+  background-color: #0097a7 !important;
+}
+.fixed.menu .container .item {
+  color: #ffffff !important;
+  border: 0 !important;
+}
+.fixed.menu .container .item.active {
+  font-weight: bold;
+}
+.fixed.menu .container .item::before {
+  display: none;
+}
+
 .landing .segment:nth-child(1) {
   min-height: 100vh;
   padding: 1em 0em;
@@ -386,16 +404,6 @@ a {
 }
 .landing .segment:nth-child(1) .menu {
   border: 0 !important;
-}
-.landing .segment:nth-child(1) .fixed.menu {
-  background-color: #0097a7;
-}
-.landing .segment:nth-child(1) .fixed.menu .container .item {
-  color: #ffffff;
-  border: 0 !important;
-}
-.landing .segment:nth-child(1) .fixed.menu .container .item::before {
-  display: none;
 }
 
 .landing .idea {
@@ -414,4 +422,11 @@ a {
 }
 .landing .filter .icon {
   color: #00bcd4;
+}
+
+.about .grid {
+  padding-top: 5rem !important;
+}
+.about .grid .card .icon {
+  color: #00bcd4 !important;
 }

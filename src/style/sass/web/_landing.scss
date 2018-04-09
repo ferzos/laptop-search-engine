@@ -7,19 +7,6 @@
     .menu{
       border: 0 !important;
     }
-
-    .fixed.menu{
-      background-color: $color-dark-primary;
-      .container {
-        .item {
-          color: #FFFFFF;
-          border: 0 !important;
-        }
-        .item::before {
-          display: none;
-        }
-      }
-    }
   }
   
   .idea{

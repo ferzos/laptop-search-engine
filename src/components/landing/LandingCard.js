@@ -6,6 +6,7 @@ export default class LandingCard extends Component {
     const cardsContent = [
       { icon: 'server', title: 'Processor' },
       { icon: 'microchip', title: 'RAM' },
+      { icon: 'game', title: 'VGA Card' },
       { icon: 'database', title: 'Kapasitas' },
       { icon: 'industry', title: 'Merek' },
       { icon: 'money', title: 'Harga' },
@@ -16,7 +17,7 @@ export default class LandingCard extends Component {
         <Card.Content>
           <Card.Header>
             <Icon name={icon} />
-            {title}
+            &nbsp;&nbsp;{title}
           </Card.Header>
         </Card.Content>
       </Card>

@@ -6,7 +6,6 @@ export default class MenuList extends Component {
   render() {
     const menus = [
       { route: '/', name: 'Beranda' },
-      { route: '/contact', name: 'Kontak' },
       { route: '/about', name: 'Tentang' },
     ];
 

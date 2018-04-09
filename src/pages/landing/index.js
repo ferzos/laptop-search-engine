@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
-import ResponsiveContainer from './ResponsiveContainer';
+import ResponsiveContainer from '../../components/ResponsiveContainer';
 import LandingCard from '../../components/landing/LandingCard';
 
-class Landing extends Component {
+export default class Landing extends Component {
   render = () => (
     <div className="landing">
       <ResponsiveContainer>
@@ -82,5 +82,3 @@ class Landing extends Component {
     </div>
   );
 }
-
-export default Landing;

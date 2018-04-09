@@ -1,0 +1,15 @@
+.fixed.menu{
+  background-color: $color-dark-primary !important;
+  .container {
+    .item {
+      color: #FFFFFF !important;
+      border: 0 !important;
+    }
+    .item.active {
+      font-weight: bold;
+    }
+    .item::before {
+      display: none;
+    }
+  }
+}

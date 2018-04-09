@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Button, Icon } from 'semantic-ui-react';
 
-class LandingHeader extends Component {
+export default class LandingHeader extends Component {
   render = ({ mobile } = this.props) => (
     <Container text>
       <Header
@@ -41,5 +41,3 @@ class LandingHeader extends Component {
     </Container>
   );
 }
-
-export default LandingHeader;

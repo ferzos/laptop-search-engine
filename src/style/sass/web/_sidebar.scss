@@ -1,0 +1,16 @@
+.sidebar {
+  background-color: $color-dark-primary !important; 
+}
+
+.pusher {
+  .segment {
+    background-color: $color-dark-primary !important; 
+    .secondary.menu {
+      border: 0 !important;
+      h3 {
+        color: #ffffff !important;
+        margin: auto 0 !important;
+      }
+    }
+  }
+}

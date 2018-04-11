@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
-import { Sidebar, Menu, Segment, Container, Icon } from 'semantic-ui-react';
+import {
+  Sidebar,
+  Menu,
+  Segment,
+  Container,
+  Icon,
+  Header,
+} from 'semantic-ui-react';
 
 import LandingHeader from './landing/LandingHeader';
 import MenuList from './MenuList';
 
 export default class MobileSidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLanding: window.location.pathname === '/',
+    };
+  }
+
   state = {};
 
   handlePusherClick = () => {
@@ -15,6 +29,15 @@ export default class MobileSidebar extends Component {
 
   handleToggle = () =>
     this.setState({ sidebarOpened: !this.state.sidebarOpened });
+
+  landingBuilder = () => {
+    if (this.state.isLanding) return <LandingHeader mobile />;
+  };
+
+  headerBuilder = () => {
+    if (!this.state.isLanding)
+      return <Header as="h3" content="Mesin Pencari Laptop" />;
+  };
 
   render() {
     const { children } = this.props;
@@ -40,7 +63,10 @@ export default class MobileSidebar extends Component {
           <Segment
             inverted
             textAlign="center"
-            style={{ minHeight: 350, padding: '1em 0em' }}
+            style={{
+              minHeight: this.state.isLanding ? '350' : '',
+              padding: '1em 0em',
+            }}
             vertical
           >
             <Container>
@@ -48,9 +74,10 @@ export default class MobileSidebar extends Component {
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name="sidebar" />
                 </Menu.Item>
+                {this.headerBuilder()}
               </Menu>
             </Container>
-            <LandingHeader mobile />
+            {this.landingBuilder()}
           </Segment>
           {children}
         </Sidebar.Pusher>

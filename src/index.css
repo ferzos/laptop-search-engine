@@ -397,6 +397,21 @@ a {
   display: none;
 }
 
+.sidebar {
+  background-color: #0097a7 !important;
+}
+
+.pusher .segment {
+  background-color: #0097a7 !important;
+}
+.pusher .segment .secondary.menu {
+  border: 0 !important;
+}
+.pusher .segment .secondary.menu h3 {
+  color: #ffffff !important;
+  margin: auto 0 !important;
+}
+
 .landing .segment:nth-child(1) {
   min-height: 100vh;
   padding: 1em 0em;
@@ -408,6 +423,7 @@ a {
 
 .landing .idea {
   padding: 3em 0em !important;
+  background-color: #ffffff !important;
 }
 .landing .idea p {
   text-align: justify;
@@ -429,4 +445,14 @@ a {
 }
 .about .grid .card .icon {
   color: #00bcd4 !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .about .grid {
+    padding-top: 2rem !important;
+  }
+  .about .grid .image {
+    display: block !important;
+    margin: 0 auto !important;
+  }
 }

@@ -16,7 +16,7 @@ export default class About extends Component {
   render = () => (
     <div className="about">
       <ResponsiveContainer>
-        <Grid centered container>
+        <Grid centered container stackable>
           <Grid.Row>
             <Grid.Column width={6}>
               <Header

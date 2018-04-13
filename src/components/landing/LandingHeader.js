@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Header, Button, Icon } from 'semantic-ui-react';
 
 export default class LandingHeader extends Component {
@@ -28,6 +29,8 @@ export default class LandingHeader extends Component {
         }}
       />
       <Button
+        as={Link}
+        to="/search"
         inverted
         size="huge"
         style={{

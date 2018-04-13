@@ -1,8 +1,7 @@
 .landing{
   .segment:nth-child(1){
-    min-height: 100vh;
     padding: 1em 0em;
-    background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
+    background: $color-background;
 
     .menu{
       border: 0 !important;
@@ -19,7 +18,7 @@
 
   .filter{
     padding: 3em 0em !important;
-    background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
+    background: $color-background;
     h3{
       color: #FFFFFF !important;
     }

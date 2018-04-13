@@ -12,7 +12,7 @@ export default class DesktopContainer extends Component {
 
   desktopComponentBuilder(fixed) {
     if (window.location.pathname === '/') {
-      return(
+      return (
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -23,18 +23,18 @@ export default class DesktopContainer extends Component {
             <LandingHeader />
           </Segment>
         </Visibility>
-        )
+      );
+    } else if (window.location.pathname === '/search') {
+      return null;
     } else {
-      return (
-        <Navbar fixed={true} />
-      )
+      return <Navbar fixed={true} />;
     }
   }
 
   render() {
     const { children } = this.props;
     const { fixed } = this.state;
-   
+
     return (
       <Responsive {...Responsive.onlyComputer}>
         {this.desktopComponentBuilder(fixed)}

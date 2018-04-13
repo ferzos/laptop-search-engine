@@ -8,6 +8,7 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
 import Landing from './pages/landing';
+import Search from './pages/search';
 import About from './pages/about';
 
 const app = document.getElementById('app');
@@ -17,6 +18,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Landing} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/about" component={About} />
       </Switch>
     </BrowserRouter>

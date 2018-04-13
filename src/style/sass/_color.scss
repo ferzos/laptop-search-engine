@@ -3,6 +3,7 @@
 $color-dark-primary : #0097A7;
 $color-primary : #00BCD4;
 $color-secondary: #FF5252;
+$color-background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
 
 .color-primary{
   color: $color-primary !important;

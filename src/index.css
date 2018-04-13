@@ -370,6 +370,15 @@ template {
   display: none;
 }
 
+.search,
+.loader-segment {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 a {
   text-decoration: none !important;
 }
@@ -413,7 +422,6 @@ a {
 }
 
 .landing .segment:nth-child(1) {
-  min-height: 100vh;
   padding: 1em 0em;
   background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
 }
@@ -438,6 +446,11 @@ a {
 }
 .landing .filter .icon {
   color: #00bcd4;
+}
+
+.search,
+.loader-segment {
+  background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
 }
 
 .about .grid {

@@ -1,0 +1,4 @@
+.search, .loader-segment {
+  @extend %fullscreen;
+  background: $color-background;
+}

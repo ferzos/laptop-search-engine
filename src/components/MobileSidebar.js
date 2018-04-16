@@ -16,6 +16,7 @@ export default class MobileSidebar extends Component {
     super(props);
     this.state = {
       isLanding: window.location.pathname === '/',
+      isSearch: window.location.pathname === '/search',
     };
   }
 
@@ -37,6 +38,18 @@ export default class MobileSidebar extends Component {
   headerBuilder = () => {
     if (!this.state.isLanding)
       return <Header as="h3" content="Mesin Pencari Laptop" />;
+  };
+
+  menuBuilder = () => {
+    if (!this.state.isSearch)
+      return (
+        <Menu inverted pointing secondary size="large">
+          <Menu.Item onClick={this.handleToggle}>
+            <Icon name="sidebar" />
+          </Menu.Item>
+          {this.headerBuilder()}
+        </Menu>
+      );
   };
 
   render() {
@@ -68,15 +81,9 @@ export default class MobileSidebar extends Component {
               padding: '1em 0em',
             }}
             vertical
+            className="pusher-segment"
           >
-            <Container>
-              <Menu inverted pointing secondary size="large">
-                <Menu.Item onClick={this.handleToggle}>
-                  <Icon name="sidebar" />
-                </Menu.Item>
-                {this.headerBuilder()}
-              </Menu>
-            </Container>
+            <Container>{this.menuBuilder()}</Container>
             {this.landingBuilder()}
           </Segment>
           {children}

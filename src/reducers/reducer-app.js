@@ -1,4 +1,6 @@
-const initialState = {};
+const initialState = {
+  processor: undefined,
+};
 
 export default function(state = initialState, action) {
   switch (action.type) {

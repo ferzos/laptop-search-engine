@@ -1,4 +1,15 @@
 .search, .loader-segment {
-  @extend %fullscreen;
   background: $color-background;
+  padding-top: 29px;
+  padding-bottom: 28px;
+
+  .grid {
+    h3, p, a{
+      color: #ffffff !important;
+    }
+    button {
+      margin-bottom: 1rem !important;
+      border-radius: 10px !important;
+    }
+  }
 }

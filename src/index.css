@@ -370,15 +370,6 @@ template {
   display: none;
 }
 
-.search,
-.loader-segment {
-  position: fixed !important;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 a {
   text-decoration: none !important;
 }
@@ -410,13 +401,13 @@ a {
   background-color: #0097a7 !important;
 }
 
-.pusher .segment {
+.pusher .pusher-segment {
   background-color: #0097a7 !important;
 }
-.pusher .segment .secondary.menu {
+.pusher .pusher-segment .secondary.menu {
   border: 0 !important;
 }
-.pusher .segment .secondary.menu h3 {
+.pusher .pusher-segment .secondary.menu h3 {
   color: #ffffff !important;
   margin: auto 0 !important;
 }
@@ -451,6 +442,21 @@ a {
 .search,
 .loader-segment {
   background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
+  padding-top: 29px;
+  padding-bottom: 28px;
+}
+.search .grid h3,
+.search .grid p,
+.search .grid a,
+.loader-segment .grid h3,
+.loader-segment .grid p,
+.loader-segment .grid a {
+  color: #ffffff !important;
+}
+.search .grid button,
+.loader-segment .grid button {
+  margin-bottom: 1rem !important;
+  border-radius: 10px !important;
 }
 
 .about .grid {

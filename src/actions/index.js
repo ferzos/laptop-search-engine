@@ -6,3 +6,23 @@ export const ping = () => {
   axios.get(`${API}/ping`);
   return { type: 'PING' };
 };
+
+export const selectProcessor = processor => {
+  return { type: 'SELECT_PROCESSOR', payload: processor };
+};
+
+export const selectRam = ram => {
+  return { type: 'SELECT_RAM', payload: ram };
+};
+
+export const selectStorage = storage => {
+  return { type: 'SELECT_STORAGE', payload: storage };
+};
+
+export const selectGPU = gpu => {
+  return { type: 'SELECT_GPU', payload: gpu };
+};
+
+export const selectSSD = ssd => {
+  return { type: 'SELECT_SSD', payload: ssd };
+};

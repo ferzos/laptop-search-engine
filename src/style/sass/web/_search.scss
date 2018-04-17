@@ -1,7 +1,6 @@
-.search, .loader-segment {
+.search {
+  @extend %fullscreen;
   background: $color-background;
-  padding-top: 29px;
-  padding-bottom: 28px;
 
   .grid {
     h3, p, a{
@@ -11,5 +10,14 @@
       margin-bottom: 1rem !important;
       border-radius: 10px !important;
     }
+    .buttons {
+      margin: 0 12px !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .search {
+    position: initial !important;
   }
 }

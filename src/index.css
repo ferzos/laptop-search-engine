@@ -370,6 +370,14 @@ template {
   display: none;
 }
 
+.search {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 a {
   text-decoration: none !important;
 }
@@ -439,24 +447,26 @@ a {
   color: #00bcd4;
 }
 
-.search,
-.loader-segment {
+.search {
   background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
-  padding-top: 29px;
-  padding-bottom: 28px;
 }
 .search .grid h3,
 .search .grid p,
-.search .grid a,
-.loader-segment .grid h3,
-.loader-segment .grid p,
-.loader-segment .grid a {
+.search .grid a {
   color: #ffffff !important;
 }
-.search .grid button,
-.loader-segment .grid button {
+.search .grid button {
   margin-bottom: 1rem !important;
   border-radius: 10px !important;
+}
+.search .grid .buttons {
+  margin: 0 12px !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .search {
+    position: initial !important;
+  }
 }
 
 .about .grid {

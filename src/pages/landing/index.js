@@ -54,7 +54,7 @@ export default class Landing extends Component {
                   sesuai dengan spesifikasi yang diinginkan. Jika kamu memiliki
                   ide untuk pengembangan aplikasi ini silahkan hubungi saya pada
                   kontak{' '}
-                  <NavLink exact to="/contact">
+                  <NavLink exact to="/about">
                     berikut.
                   </NavLink>
                 </p>

@@ -6,7 +6,7 @@ export default class LandingCard extends Component {
     const cardsContent = [
       { icon: 'server', title: 'Processor' },
       { icon: 'microchip', title: 'RAM' },
-      { icon: 'game', title: 'GPU' },
+      { icon: 'game', title: 'Graphic Card' },
       { icon: 'database', title: 'Kapasitas' },
       { icon: 'industry', title: 'Merek' },
       { icon: 'money', title: 'Harga' },

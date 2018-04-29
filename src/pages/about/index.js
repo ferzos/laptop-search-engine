@@ -11,6 +11,9 @@ import NodeLogo from '../../assets/node-js.svg.png';
 import ReduxLogo from '../../assets/redux.png';
 import SassLogo from '../../assets/sass.svg.png';
 import MongoDBLogo from '../../assets/mongodb.png';
+import MLabLogo from '../../assets/mlab.png';
+import ExpressLogo from '../../assets/express.png';
+import HerokuLogo from '../../assets/heroku.png';
 
 export default class About extends Component {
   render = () => (
@@ -34,15 +37,36 @@ export default class About extends Component {
                 className="color-primary text-bold"
                 content="Teknologi Proyek Mesin Pencari Laptop"
               />
-              <Image.Group>
-                <Image src={NodeLogo} size="medium" />
-                <Image src={ReactLogo} size="medium" />
-              </Image.Group>
-              <Image.Group>
-                <Image src={ReduxLogo} size="medium" />
-                <Image src={SassLogo} size="small" />
-                <Image src={MongoDBLogo} size="small" />
-              </Image.Group>
+              <Grid centered container stackable>
+                <Grid.Row>
+                  <Grid.Column width={4}>
+                    <Image src={MLabLogo} fluid />
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Image src={MongoDBLogo} fluid />
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Image src={ExpressLogo} fluid />
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Image src={HerokuLogo} fluid />
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column width={4}>
+                    <Image src={NodeLogo} fluid />
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Image src={ReactLogo} fluid />
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Image src={ReduxLogo} fluid />
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Image src={SassLogo} fluid />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
             </Grid.Column>
           </Grid.Row>
         </Grid>

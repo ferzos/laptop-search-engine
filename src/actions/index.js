@@ -26,3 +26,7 @@ export const selectGPU = gpu => {
 export const selectSSD = ssd => {
   return { type: 'SELECT_SSD', payload: ssd };
 };
+
+export const selectBrand = brand => {
+  return { type: 'SELECT_BRAND', payload: brand };
+};

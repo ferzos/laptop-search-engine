@@ -8,6 +8,7 @@ import Ram from '../../components/search/Ram';
 import Storage from '../../components/search/Storage';
 import VGA from '../../components/search/VGA';
 import SSD from '../../components/search/SSD';
+import Brand from '../../components/search/Brand';
 
 import { ping } from '../../actions';
 
@@ -21,14 +22,14 @@ class Search extends Component {
       return <Processor />;
     } else if (this.props.app.ram === undefined) {
       return <Ram />;
-    } else if (this.props.app.storage === undefined) {
-      return <Storage />;
     } else if (this.props.app.vga === undefined) {
       return <VGA />;
+    } else if (this.props.app.storage === undefined) {
+      return <Storage />;
     } else if (this.props.app.ssd === undefined) {
       return <SSD />;
     } else if (this.props.app.brand === undefined) {
-      return null;
+      return <Brand />;
     } else if (this.props.app.price === undefined) {
       return null;
     }

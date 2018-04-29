@@ -16,6 +16,8 @@ export default function(state = initialState, action) {
       return { ...state, vga: action.payload };
     case 'SELECT_SSD':
       return { ...state, ssd: action.payload };
+    case 'SELECT_BRAND':
+      return { ...state, brand: action.payload };
     default:
       return state;
   }

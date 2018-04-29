@@ -66,6 +66,11 @@ class Processor extends Component {
               />
             </Button.Group>
           </Segment>
+          <Button
+            content="Tidak ada preferensi"
+            size="massive"
+            onClick={() => this.props.selectProcessor('')}
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>

@@ -62,6 +62,11 @@ class Ram extends Component {
               />
             </Button.Group>
           </Segment>
+          <Button
+            content="Tidak ada preferensi"
+            size="massive"
+            onClick={() => this.props.selectRam('')}
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>

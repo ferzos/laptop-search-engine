@@ -68,6 +68,11 @@ class Storage extends Component {
               />
             </Button.Group>
           </Segment>
+          <Button
+            content="Tidak ada preferensi"
+            size="massive"
+            onClick={() => this.props.selectStorage('')}
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>

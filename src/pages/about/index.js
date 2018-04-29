@@ -37,15 +37,6 @@ export default class About extends Component {
                 className="color-primary text-bold"
                 content="Teknologi Proyek Mesin Pencari Laptop"
               />
-              {/* <Image.Group>
-                <Image src={NodeLogo} size="medium" />
-                <Image src={ReactLogo} size="medium" />
-              </Image.Group>
-              <Image.Group>
-                <Image src={ReduxLogo} size="medium" />
-                <Image src={SassLogo} size="small" />
-                <Image src={MongoDBLogo} size="small" />
-              </Image.Group> */}
               <Grid centered container stackable>
                 <Grid.Row>
                   <Grid.Column width={4}>

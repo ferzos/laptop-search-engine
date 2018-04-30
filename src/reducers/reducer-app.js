@@ -18,6 +18,8 @@ export default function(state = initialState, action) {
       return { ...state, ssd: action.payload };
     case 'SELECT_BRAND':
       return { ...state, brand: action.payload };
+    case 'SELECT_MAX_PRICE':
+      return { ...state, maxPrice: action.payload };
     default:
       return state;
   }

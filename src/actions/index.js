@@ -30,3 +30,7 @@ export const selectSSD = ssd => {
 export const selectBrand = brand => {
   return { type: 'SELECT_BRAND', payload: brand };
 };
+
+export const selectMaxPrice = maxPrice => {
+  return { type: 'SELECT_MAX_PRICE', payload: maxPrice };
+};

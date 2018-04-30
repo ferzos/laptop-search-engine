@@ -9,6 +9,7 @@ import Storage from '../../components/search/Storage';
 import VGA from '../../components/search/VGA';
 import SSD from '../../components/search/SSD';
 import Brand from '../../components/search/Brand';
+import Price from '../../components/search/Price';
 
 import { ping } from '../../actions';
 
@@ -31,7 +32,7 @@ class Search extends Component {
     } else if (this.props.app.brand === undefined) {
       return <Brand />;
     } else if (this.props.app.price === undefined) {
-      return null;
+      return <Price />;
     }
   }
 

@@ -40,68 +40,68 @@ class VGA extends Component {
               className="text-bold"
               size="large"
             />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-              }}
-            >
-              <Button.Group vertical>
-                <Button
-                  content="Intel HD"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Intel HD')}
-                />
-                <Button
-                  content="Radeon apapun"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Radeon')}
-                />
-                <Button
-                  content="Radeon R5"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Radeon R5')}
-                />
-                <Button
-                  content="Radeon R6"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Radeon R6')}
-                />
-                <Button
-                  content="Radeon R7"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Radeon R7')}
-                />
-                <Button
-                  content="Radeon R8"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Radeon R8')}
-                />
-              </Button.Group>
-              <Button.Group vertical>
-                <Button
-                  content="Nvidia apapun"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Nvidia')}
-                />
-                <Button
-                  content="Nvidia GT"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Nvidia GT')}
-                />
-                <Button
-                  content="Nvidia GTX"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('Nvidia GTX')}
-                />
-                <Button
-                  content="Tidak ada preferensi"
-                  size="massive"
-                  onClick={() => this.props.selectGPU('')}
-                />
-              </Button.Group>
-            </div>
+            <Grid centered container stackable>
+              <Grid.Row>
+                <Grid.Column width={8}>
+                  <Button.Group vertical>
+                    <Button
+                      content="Intel HD"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Intel HD')}
+                    />
+                    <Button
+                      content="Radeon apapun"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Radeon')}
+                    />
+                    <Button
+                      content="Radeon R5"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Radeon R5')}
+                    />
+                    <Button
+                      content="Radeon R6"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Radeon R6')}
+                    />
+                    <Button
+                      content="Radeon R7"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Radeon R7')}
+                    />
+                    <Button
+                      content="Radeon R8"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Radeon R8')}
+                    />
+                  </Button.Group>
+                </Grid.Column>
+                <Grid.Column width={8}>
+                  <Button.Group vertical>
+                    <Button
+                      content="Nvidia apapun"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Nvidia')}
+                    />
+                    <Button
+                      content="Nvidia GT"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Nvidia GT')}
+                    />
+                    <Button
+                      content="Nvidia GTX"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('Nvidia GTX')}
+                    />
+                    <Button
+                      content="Tidak ada preferensi"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('')}
+                    />
+                  </Button.Group>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Segment>
         </Grid.Column>
       </Grid.Row>

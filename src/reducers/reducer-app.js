@@ -1,11 +1,7 @@
-const initialState = {
-  isReady: false,
-};
+const initialState = {};
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case 'PING':
-      return { ...state, isReady: true };
     case 'SELECT_PROCESSOR':
       return { ...state, processor: action.payload };
     case 'SELECT_RAM':

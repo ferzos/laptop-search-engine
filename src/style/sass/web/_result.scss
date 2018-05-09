@@ -1,0 +1,20 @@
+.result {
+  .grid {
+    padding-top: 5rem !important;
+    
+    .no-laptop {
+      h3, .frown {
+        color: $color-primary !important;
+        width: 100%;
+      }
+    }
+
+    .cards {
+      .card {
+        .icon {
+          color: $color-primary !important;
+        }
+      }
+    }
+  }
+}

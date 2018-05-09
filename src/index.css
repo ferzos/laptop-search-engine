@@ -472,6 +472,18 @@ a {
   }
 }
 
+.result .grid {
+  padding-top: 5rem !important;
+}
+.result .grid .no-laptop h3,
+.result .grid .no-laptop .frown {
+  color: #00bcd4 !important;
+  width: 100%;
+}
+.result .grid .cards .card .icon {
+  color: #00bcd4 !important;
+}
+
 .about .grid {
   padding-top: 5rem !important;
 }

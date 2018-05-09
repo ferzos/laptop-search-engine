@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import axios from 'axios';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
 import Processor from '../../components/search/Processor';
@@ -11,11 +11,14 @@ import SSD from '../../components/search/SSD';
 import Brand from '../../components/search/Brand';
 import Price from '../../components/search/Price';
 
-import { ping } from '../../actions';
-
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.API = 'http://eggman.herokuapp.com/api';
+  }
+
   componentDidMount() {
-    this.props.ping();
+    axios.get(`${this.API}/ping`);
   }
 
   buildSearch() {
@@ -49,8 +52,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ping }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps)(Search);

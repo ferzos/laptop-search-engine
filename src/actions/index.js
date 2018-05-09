@@ -1,12 +1,3 @@
-import axios from 'axios';
-
-const API = 'http://eggman.herokuapp.com/api';
-
-export const ping = () => {
-  axios.get(`${API}/ping`);
-  return { type: 'PING' };
-};
-
 export const selectProcessor = processor => {
   return { type: 'SELECT_PROCESSOR', payload: processor };
 };

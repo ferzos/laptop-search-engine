@@ -51,6 +51,11 @@ class SSD extends Component {
                 size="massive"
                 onClick={() => this.props.selectSSD(false)}
               />
+              <Button
+                content="Tidak ada preferensi"
+                size="massive"
+                onClick={() => this.props.selectSSD('')}
+              />
             </Button.Group>
           </Segment>
         </Grid.Column>

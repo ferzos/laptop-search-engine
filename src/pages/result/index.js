@@ -4,9 +4,12 @@
 import React, { Component } from 'react';
 import { Grid, Card, Icon, Header, Loader } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
+
+import { resetState } from '../../actions';
 
 class Result extends Component {
   constructor(props) {
@@ -20,7 +23,6 @@ class Result extends Component {
 
   componentDidMount() {
     const self = this;
-    console.log(this.props.app);
     axios
       .get(this.API, { params: this.props.app })
       .then(function(response) {
@@ -29,6 +31,7 @@ class Result extends Component {
         } else {
           self.setState({ isNoResult: true });
         }
+        console.log(this.props);
       })
       .catch(function(error) {
         console.log(error);
@@ -54,10 +57,10 @@ class Result extends Component {
             <Card.Content header={name} />
             <Card.Content description={details.details} />
             <Card.Content extra>
-              <Icon name="server" /> {details.processor} <br />
+              {/* <Icon name="server" /> {details.processor} <br />
               <Icon name="microchip" /> {details.ram} GB<br />
-              <Icon name="database" /> {this.parsingStorage(details.storage)}{' '}
-              <br />
+              <Icon name="database" /> {this.parsingStorage(details.storage)}<br />
+              <Icon name="game" /> {details.vga}<br /> */}
               <Icon name="industry" /> {brand} <br />
               <Icon name="money" /> {this.formatCurrency(price)} <br />
             </Card.Content>
@@ -105,10 +108,14 @@ class Result extends Component {
   );
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ resetState }, dispatch);
+}
+
 function mapStateToProps(state) {
   return {
     app: state.app,
   };
 }
 
-export default connect(mapStateToProps)(Result);
+export default connect(mapStateToProps, mapDispatchToProps)(Result);

@@ -25,3 +25,7 @@ export const selectBrand = brand => {
 export const selectMaxPrice = maxPrice => {
   return { type: 'SELECT_MAX_PRICE', payload: maxPrice };
 };
+
+export const resetState = () => {
+  return { type: 'RESET_STATE', payload: '' };
+};

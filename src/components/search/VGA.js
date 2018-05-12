@@ -44,16 +44,11 @@ class VGA extends Component {
               <Grid.Row>
                 <Grid.Column width={8}>
                   <Button.Group vertical>
-                    <Button
-                      content="Intel HD"
-                      size="massive"
-                      onClick={() => this.props.selectGPU('Intel HD')}
-                    />
-                    <Button
+                    {/* <Button
                       content="Radeon apapun"
                       size="massive"
                       onClick={() => this.props.selectGPU('Radeon')}
-                    />
+                    /> */}
                     <Button
                       content="Radeon R5"
                       size="massive"
@@ -78,20 +73,20 @@ class VGA extends Component {
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <Button.Group vertical>
-                    <Button
+                    {/* <Button
                       content="Nvidia apapun"
                       size="massive"
                       onClick={() => this.props.selectGPU('Nvidia')}
-                    />
+                    /> */}
                     <Button
                       content="Nvidia GT"
                       size="massive"
-                      onClick={() => this.props.selectGPU('Nvidia GT')}
+                      onClick={() => this.props.selectGPU('GT')}
                     />
                     <Button
                       content="Nvidia GTX"
                       size="massive"
-                      onClick={() => this.props.selectGPU('Nvidia GTX')}
+                      onClick={() => this.props.selectGPU('GTX')}
                     />
                     <Button
                       content="Tidak ada preferensi"

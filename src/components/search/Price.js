@@ -57,8 +57,8 @@ class Brand extends Component {
         <Grid.Column width={16}>
           <Slider
             min={2000000}
-            max={20000000}
-            step={100000}
+            max={96000000}
+            step={1000000}
             value={this.state.max}
             tooltip={false}
             onChange={this.handleOnChange}

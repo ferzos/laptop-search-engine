@@ -47,11 +47,6 @@ class Storage extends Component {
                 onClick={() => this.props.selectStorage('256')}
               />
               <Button
-                content="500 GB"
-                size="massive"
-                onClick={() => this.props.selectStorage('500')}
-              />
-              <Button
                 content="512 GB"
                 size="massive"
                 onClick={() => this.props.selectStorage('512')}

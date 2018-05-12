@@ -16,6 +16,8 @@ export default function(state = initialState, action) {
       return { ...state, brand: action.payload };
     case 'SELECT_MAX_PRICE':
       return { ...state, maxPrice: action.payload };
+    case 'RESET_STATE':
+      return {};
     default:
       return state;
   }

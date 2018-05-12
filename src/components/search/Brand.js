@@ -65,7 +65,14 @@ class Brand extends Component {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column width={16}>{this.buildButton()}</Grid.Column>
+        <Grid.Column width={16}>
+          {this.buildButton()}
+          <Button
+            content="Tidak ada preferensi"
+            size="massive"
+            onClick={() => this.props.selectBrand('')}
+          />
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   );

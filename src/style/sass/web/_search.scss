@@ -1,18 +1,36 @@
 .search {
-  @extend %fullscreen;
-  background: $color-background;
+  .search-container {
+    padding-top: 5rem !important;
 
-  .grid {
-    h3, p, a{
-      color: #ffffff !important;
+    .pointing.menu {
+      overflow-x: auto;
+      overflow-y: hidden;
+      
+      .item {
+        cursor: pointer;
+      }
+
+      .item.active, .item.active:after {
+        background: $color-primary !important;
+        color: #ffffff !important;
+        font-weight: bold;
+      }
     }
+
     button {
       margin-bottom: 1rem !important;
       border-radius: 10px !important;
     }
+    
+    .active.button {
+      background: $color-primary;
+      color: #ffffff;
+    }
+
     .buttons {
       margin: 0 12px !important;
     }
+
     .button-search {
       color: rgba(0,0,0,.6) !important;
     }

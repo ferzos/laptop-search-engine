@@ -38,6 +38,10 @@ body {
   font-weight: bold !important;
 }
 
+.text-wrap {
+  word-wrap: break-word;
+}
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -370,14 +374,6 @@ template {
   display: none;
 }
 
-.search {
-  position: fixed !important;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 a {
   text-decoration: none !important;
 }
@@ -447,22 +443,34 @@ a {
   color: #00bcd4;
 }
 
-.search {
-  background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
+.search .search-container {
+  padding-top: 5rem !important;
 }
-.search .grid h3,
-.search .grid p,
-.search .grid a {
+.search .search-container .pointing.menu {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.search .search-container .pointing.menu .item {
+  cursor: pointer;
+}
+.search .search-container .pointing.menu .item.active,
+.search .search-container .pointing.menu .item.active:after {
+  background: #00bcd4 !important;
   color: #ffffff !important;
+  font-weight: bold;
 }
-.search .grid button {
+.search .search-container button {
   margin-bottom: 1rem !important;
   border-radius: 10px !important;
 }
-.search .grid .buttons {
+.search .search-container .active.button {
+  background: #00bcd4;
+  color: #ffffff;
+}
+.search .search-container .buttons {
   margin: 0 12px !important;
 }
-.search .grid .button-search {
+.search .search-container .button-search {
   color: rgba(0, 0, 0, 0.6) !important;
 }
 

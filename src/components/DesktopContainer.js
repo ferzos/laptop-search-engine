@@ -24,8 +24,6 @@ export default class DesktopContainer extends Component {
           </Segment>
         </Visibility>
       );
-    } else if (window.location.pathname === '/search') {
-      return null;
     } else {
       return <Navbar fixed={true} />;
     }

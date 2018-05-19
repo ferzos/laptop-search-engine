@@ -1,4 +1,12 @@
-const initialState = {};
+const initialState = {
+  processor: [],
+  ram: [],
+  storage: [],
+  vga: [],
+  ssd: [],
+  brand: [],
+  maxPrice: [],
+};
 
 export default function(state = initialState, action) {
   switch (action.type) {

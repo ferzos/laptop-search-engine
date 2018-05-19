@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Menu, Grid, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
@@ -15,6 +16,9 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.API = 'http://eggman.herokuapp.com/api';
+    this.state = {
+      activeItem: 'Processor',
+    };
   }
 
   componentDidMount() {
@@ -22,26 +26,71 @@ class Search extends Component {
   }
 
   buildSearch() {
-    if (this.props.app.processor === undefined) {
+    if (this.state.activeItem === 'Processor') {
       return <Processor />;
-    } else if (this.props.app.ram === undefined) {
+    } else if (this.state.activeItem === 'Ram') {
       return <Ram />;
-    } else if (this.props.app.vga === undefined) {
+    } else if (this.state.activeItem === 'GPU') {
       return <VGA />;
-    } else if (this.props.app.storage === undefined) {
+    } else if (this.state.activeItem === 'Storage') {
       return <Storage />;
-    } else if (this.props.app.ssd === undefined) {
+    } else if (this.state.activeItem === 'SSD') {
       return <SSD />;
-    } else if (this.props.app.brand === undefined) {
+    } else if (this.state.activeItem === 'Brand') {
       return <Brand />;
-    } else if (this.props.app.price === undefined) {
+    } else if (this.state.activeItem === 'Price') {
       return <Price />;
     }
   }
 
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
   render = () => (
     <div className="search">
-      <ResponsiveContainer>{this.buildSearch()}</ResponsiveContainer>
+      <ResponsiveContainer>
+        <Grid className="search-container" centered container stackable>
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <Menu pointing>
+                <Menu.Item
+                  name="Processor"
+                  active={this.state.activeItem === 'Processor'}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="Ram"
+                  active={this.state.activeItem === 'Ram'}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="Storage"
+                  active={this.state.activeItem === 'Storage'}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="GPU"
+                  active={this.state.activeItem === 'GPU'}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="Brand"
+                  active={this.state.activeItem === 'Brand'}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="Price"
+                  active={this.state.activeItem === 'Price'}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Menu position="right">
+                  <Menu.Item name="Cari" />
+                </Menu.Menu>
+              </Menu>
+              <Segment>{this.buildSearch()}</Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </ResponsiveContainer>
     </div>
   );
 }

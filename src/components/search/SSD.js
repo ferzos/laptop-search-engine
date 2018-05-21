@@ -11,7 +11,7 @@ class SSD extends Component {
     <Grid centered container stackable>
       <Grid.Row>
         <Grid.Column width={8}>
-          <Segment basic size="massive">
+          <Segment basic>
             <Header as="h3" content="SSD" className="text-bold" size="huge" />
             <p>
               <i>Solid State Drive</i> adalah media penyimpanan elektronik yang
@@ -32,8 +32,8 @@ class SSD extends Component {
             <Image src={SSDImage} alt="processor" size="medium" />
           </Segment>
         </Grid.Column>
-        <Grid.Column width={8} verticalAlign="middle">
-          <Segment basic size="massive">
+        <Grid.Column width={8} textAlign="center">
+          <Segment basic>
             <Header
               as="h3"
               content="Apakah kamu butuh SSD?"
@@ -42,19 +42,14 @@ class SSD extends Component {
             />
             <Button.Group vertical>
               <Button
+                active={this.props.app.ssd === true}
                 content="Ya"
-                size="massive"
                 onClick={() => this.props.selectSSD(true)}
               />
               <Button
+                active={this.props.app.ssd === false}
                 content="Tidak"
-                size="massive"
                 onClick={() => this.props.selectSSD(false)}
-              />
-              <Button
-                content="Tidak ada preferensi"
-                size="massive"
-                onClick={() => this.props.selectSSD('')}
               />
             </Button.Group>
           </Segment>
@@ -64,8 +59,14 @@ class SSD extends Component {
   );
 }
 
+function mapStateToProps(state) {
+  return {
+    app: state.app,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectSSD }, dispatch);
 }
 
-export default connect('', mapDispatchToProps)(SSD);
+export default connect(mapStateToProps, mapDispatchToProps)(SSD);

@@ -3,7 +3,7 @@ const initialState = {
   ram: [],
   storage: [],
   vga: [],
-  ssd: [],
+  ssd: undefined,
   brand: [],
   maxPrice: [],
 };

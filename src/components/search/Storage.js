@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import HDDImage from '../../assets/hdd.png';
 import { selectStorage } from '../../actions';
+import { selectSSD } from '../../actions';
 
 class Storage extends Component {
   handleButton = data => {
@@ -16,6 +17,7 @@ class Storage extends Component {
     } else {
       newChosen.push(data);
       this.props.selectStorage(newChosen);
+      this.props.selectSSD(false);
     }
   };
 
@@ -41,7 +43,7 @@ class Storage extends Component {
                 </i>
               </a>
             </p>
-            <Image src={HDDImage} alt="hdd" size="medium" />
+            <Image src={HDDImage} alt="hdd" size="small" />
           </Segment>
         </Grid.Column>
         <Grid.Column width={8}>
@@ -53,11 +55,6 @@ class Storage extends Component {
               size="large"
             />
             <Button.Group vertical>
-              <Button
-                active={this.props.app.storage.includes(128)}
-                content="128 GB"
-                onClick={() => this.handleButton(128)}
-              />
               <Button
                 active={this.props.app.storage.includes(256)}
                 content="256 GB"
@@ -93,7 +90,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectStorage }, dispatch);
+  return bindActionCreators({ selectStorage, selectSSD }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Storage);

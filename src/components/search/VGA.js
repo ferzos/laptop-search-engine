@@ -54,7 +54,7 @@ class VGA extends Component {
             />
             <Grid centered container stackable>
               <Grid.Row>
-                <Grid.Column width={8}>
+                <Grid.Column width={8} textAlign="center">
                   <Button.Group vertical>
                     <Button
                       content="Radeon apapun"
@@ -78,7 +78,7 @@ class VGA extends Component {
                     />
                   </Button.Group>
                 </Grid.Column>
-                <Grid.Column width={8}>
+                <Grid.Column width={8} textAlign="center">
                   <Button.Group vertical>
                     <Button
                       content="Nvidia apapun"

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Menu, Grid, Segment } from 'semantic-ui-react';
+import { Menu, Grid, Segment, Icon } from 'semantic-ui-react';
 import axios from 'axios';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
@@ -43,6 +43,19 @@ class Search extends Component {
     }
   }
 
+  buildSSDMenu() {
+    return this.props.app.storage.length === 1 &&
+      this.props.app.storage.includes(256) ? (
+      <Menu.Item
+        name="SSD"
+        active={this.state.activeItem === 'SSD'}
+        onClick={this.handleItemClick}
+      />
+    ) : (
+      ''
+    );
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render = () => (
@@ -67,6 +80,7 @@ class Search extends Component {
                   active={this.state.activeItem === 'Storage'}
                   onClick={this.handleItemClick}
                 />
+                {this.buildSSDMenu()}
                 <Menu.Item
                   name="GPU"
                   active={this.state.activeItem === 'GPU'}
@@ -83,7 +97,9 @@ class Search extends Component {
                   onClick={this.handleItemClick}
                 />
                 <Menu.Menu position="right">
-                  <Menu.Item name="Cari" />
+                  <Menu.Item>
+                    <Icon name="search" />
+                  </Menu.Item>
                 </Menu.Menu>
               </Menu>
               <Segment>{this.buildSearch()}</Segment>

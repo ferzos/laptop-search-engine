@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment, Button, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -7,23 +7,11 @@ import GPUImage from '../../assets/gpu.png';
 import { selectGPU } from '../../actions';
 
 class VGA extends Component {
-  handleButton = data => {
-    let newChosen = this.props.app.vga.slice();
-
-    if (newChosen.includes(data)) {
-      const filteredChosen = newChosen.filter(vga => vga !== data);
-      this.props.selectGPU(filteredChosen);
-    } else {
-      newChosen.push(data);
-      this.props.selectGPU(newChosen);
-    }
-  };
-
   render = () => (
     <Grid centered container stackable>
       <Grid.Row>
         <Grid.Column width={8}>
-          <Segment basic>
+          <Segment basic size="massive">
             <Header as="h3" content="GPU" className="text-bold" size="huge" />
             <p>
               <i>Graphics Processing Unit</i> adalah prosesor chip tunggal yang
@@ -44,8 +32,8 @@ class VGA extends Component {
             <Image src={GPUImage} alt="processor" size="small" />
           </Segment>
         </Grid.Column>
-        <Grid.Column width={8}>
-          <Segment basic vertical textAlign="center">
+        <Grid.Column width={8} verticalAlign="middle">
+          <Segment basic size="massive">
             <Header
               as="h3"
               content="Pilih GPUmu"
@@ -56,41 +44,54 @@ class VGA extends Component {
               <Grid.Row>
                 <Grid.Column width={8}>
                   <Button.Group vertical>
-                    <Button
+                    {/* <Button
                       content="Radeon apapun"
+                      size="massive"
                       onClick={() => this.props.selectGPU('Radeon')}
-                    />
+                    /> */}
                     <Button
                       content="Radeon R5"
+                      size="massive"
                       onClick={() => this.props.selectGPU('Radeon R5')}
                     />
                     <Button
                       content="Radeon R6"
+                      size="massive"
                       onClick={() => this.props.selectGPU('Radeon R6')}
                     />
                     <Button
                       content="Radeon R7"
+                      size="massive"
                       onClick={() => this.props.selectGPU('Radeon R7')}
                     />
                     <Button
                       content="Radeon R8"
+                      size="massive"
                       onClick={() => this.props.selectGPU('Radeon R8')}
                     />
                   </Button.Group>
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <Button.Group vertical>
-                    <Button
+                    {/* <Button
                       content="Nvidia apapun"
+                      size="massive"
                       onClick={() => this.props.selectGPU('Nvidia')}
-                    />
+                    /> */}
                     <Button
                       content="Nvidia GT"
+                      size="massive"
                       onClick={() => this.props.selectGPU('GT')}
                     />
                     <Button
                       content="Nvidia GTX"
+                      size="massive"
                       onClick={() => this.props.selectGPU('GTX')}
+                    />
+                    <Button
+                      content="Tidak ada preferensi"
+                      size="massive"
+                      onClick={() => this.props.selectGPU('')}
                     />
                   </Button.Group>
                 </Grid.Column>
@@ -103,14 +104,8 @@ class VGA extends Component {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    app: state.app,
-  };
-}
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectGPU }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VGA);
+export default connect('', mapDispatchToProps)(VGA);

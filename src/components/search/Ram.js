@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Button, Image } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -7,13 +7,25 @@ import RamImage from '../../assets/ram.png';
 import { selectRam } from '../../actions';
 
 class Ram extends Component {
+  handleButton = data => {
+    let newChosen = this.props.app.ram.slice();
+
+    if (newChosen.includes(data)) {
+      const filteredChosen = newChosen.filter(ram => ram !== data);
+      this.props.selectRam(filteredChosen);
+    } else {
+      newChosen.push(data);
+      this.props.selectRam(newChosen);
+    }
+  };
+
   render = () => (
     <Grid centered container stackable>
       <Grid.Row>
         <Grid.Column width={8}>
-          <Segment basic size="massive">
-            <Header as="h3" content="RAM" className="text-bold" size="huge" />
-            <p>
+          <Segment basic>
+            <Header as="h3" content="Ram" className="text-bold" size="huge" />
+            <p className="text-md text-wrap">
               <i>Random Access Memory</i> adalah suatu penyimpanan data yang
               digunakan dalam komputer, umumnya terletak di <i>motherboard</i>.
               Memori ini hanya sementara menyimpan data dan semua informasi yang
@@ -28,11 +40,11 @@ class Ram extends Component {
                 </i>
               </a>
             </p>
-            <Image src={RamImage} alt="processor" size="medium" />
+            <Image src={RamImage} alt="ram" size="medium" />
           </Segment>
         </Grid.Column>
-        <Grid.Column width={8} verticalAlign="middle">
-          <Segment basic size="massive">
+        <Grid.Column width={8}>
+          <Segment basic vertical textAlign="center">
             <Header
               as="h3"
               content="Pilih ukuran RAMmu"
@@ -41,40 +53,41 @@ class Ram extends Component {
             />
             <Button.Group vertical>
               <Button
+                active={this.props.app.ram.includes(2)}
                 content="2 GB"
-                size="massive"
-                onClick={() => this.props.selectRam('2')}
+                onClick={() => this.handleButton(2)}
               />
               <Button
+                active={this.props.app.ram.includes(4)}
                 content="4 GB"
-                size="massive"
-                onClick={() => this.props.selectRam('4')}
+                onClick={() => this.handleButton(4)}
               />
               <Button
+                active={this.props.app.ram.includes(8)}
                 content="8 GB"
-                size="massive"
-                onClick={() => this.props.selectRam('8')}
+                onClick={() => this.handleButton(8)}
               />
               <Button
+                active={this.props.app.ram.includes(16)}
                 content="16 GB"
-                size="massive"
-                onClick={() => this.props.selectRam('16')}
+                onClick={() => this.handleButton(16)}
               />
             </Button.Group>
           </Segment>
-          <Button
-            content="Tidak ada preferensi"
-            size="massive"
-            onClick={() => this.props.selectRam('')}
-          />
         </Grid.Column>
       </Grid.Row>
     </Grid>
   );
 }
 
+function mapStateToProps(state) {
+  return {
+    app: state.app,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectRam }, dispatch);
 }
 
-export default connect('', mapDispatchToProps)(Ram);
+export default connect(mapStateToProps, mapDispatchToProps)(Ram);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -52,7 +52,7 @@ class VGA extends Component {
           </Segment>
         </Grid.Column>
         <Grid.Column width={8}>
-          <Segment basic vertical textAlign="center">
+          <Segment basic vertical>
             <Header
               as="h3"
               content="Pilih GPUmu"
@@ -61,70 +61,85 @@ class VGA extends Component {
             />
             <Grid centered container stackable>
               <Grid.Row>
-                <Grid.Column width={8} textAlign="center">
-                  <Button.Group vertical>
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'amd' && vga.version === 'r5'
-                      )}
-                      content="Radeon R5"
-                      onClick={() => this.handleButton('amd', 'r5')}
-                    />
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'amd' && vga.version === 'r6'
-                      )}
-                      content="Radeon R6"
-                      onClick={() => this.handleButton('amd', 'r6')}
-                    />
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'amd' && vga.version === 'r7'
-                      )}
-                      content="Radeon R7"
-                      onClick={() => this.handleButton('amd', 'r7')}
-                    />
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'amd' && vga.version === 'r8'
-                      )}
-                      content="Radeon R8"
-                      onClick={() => this.handleButton('amd', 'r8')}
-                    />
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'amd' && vga.version === undefined
-                      )}
-                      content="Radeon lainnya"
-                      onClick={() => this.handleButton('amd')}
-                    />
-                  </Button.Group>
+                <Grid.Column width={8}>
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'amd' && vga.version === 'r5'
+                    )}
+                    label="Radeon R5"
+                    toggle
+                    onClick={() => this.handleButton('amd', 'r5')}
+                  />
+                  <br />
+                  <br />
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'amd' && vga.version === 'r6'
+                    )}
+                    label="Radeon R6"
+                    toggle
+                    onClick={() => this.handleButton('amd', 'r6')}
+                  />
+                  <br />
+                  <br />
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'amd' && vga.version === 'r7'
+                    )}
+                    label="Radeon R7"
+                    toggle
+                    onClick={() => this.handleButton('amd', 'r7')}
+                  />
+                  <br />
+                  <br />
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'amd' && vga.version === 'r8'
+                    )}
+                    label="Radeon R8"
+                    toggle
+                    onClick={() => this.handleButton('amd', 'r8')}
+                  />
+                  <br />
+                  <br />
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'amd' && vga.version === undefined
+                    )}
+                    label="Radeon lainnya"
+                    toggle
+                    onClick={() => this.handleButton('amd')}
+                  />
                 </Grid.Column>
-                <Grid.Column width={8} textAlign="center">
-                  <Button.Group vertical>
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'nvidia' && vga.version === 'gt'
-                      )}
-                      content="Nvidia GT"
-                      onClick={() => this.handleButton('nvidia', 'gt')}
-                    />
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga => vga.brand === 'nvidia' && vga.version === 'gtx'
-                      )}
-                      content="Nvidia GTX"
-                      onClick={() => this.handleButton('nvidia', 'gtx')}
-                    />
-                    <Button
-                      active={this.props.app.vga.some(
-                        vga =>
-                          vga.brand === 'nvidia' && vga.version === undefined
-                      )}
-                      content="Nvidia lainnya"
-                      onClick={() => this.handleButton('nvidia')}
-                    />
-                  </Button.Group>
+                <Grid.Column width={8}>
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'nvidia' && vga.version === 'gt'
+                    )}
+                    label="Nvidia GT"
+                    toggle
+                    onClick={() => this.handleButton('nvidia', 'gt')}
+                  />
+                  <br />
+                  <br />
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'nvidia' && vga.version === 'gtx'
+                    )}
+                    label="Nvidia GTX"
+                    toggle
+                    onClick={() => this.handleButton('nvidia', 'gtx')}
+                  />
+                  <br />
+                  <br />
+                  <Checkbox
+                    checked={this.props.app.vga.some(
+                      vga => vga.brand === 'nvidia' && vga.version === undefined
+                    )}
+                    label="Nvidia lainnya"
+                    toggle
+                    onClick={() => this.handleButton('nvidia')}
+                  />
                 </Grid.Column>
               </Grid.Row>
             </Grid>

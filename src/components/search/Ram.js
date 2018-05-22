@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -44,35 +44,45 @@ class Ram extends Component {
           </Segment>
         </Grid.Column>
         <Grid.Column width={8}>
-          <Segment basic vertical textAlign="center">
+          <Segment basic vertical>
             <Header
               as="h3"
               content="Pilih ukuran RAMmu"
               className="text-bold"
               size="large"
             />
-            <Button.Group vertical>
-              <Button
-                active={this.props.app.ram.includes(2)}
-                content="2 GB"
-                onClick={() => this.handleButton(2)}
-              />
-              <Button
-                active={this.props.app.ram.includes(4)}
-                content="4 GB"
-                onClick={() => this.handleButton(4)}
-              />
-              <Button
-                active={this.props.app.ram.includes(8)}
-                content="8 GB"
-                onClick={() => this.handleButton(8)}
-              />
-              <Button
-                active={this.props.app.ram.includes(16)}
-                content="16 GB"
-                onClick={() => this.handleButton(16)}
-              />
-            </Button.Group>
+            <Checkbox
+              toggle
+              checked={this.props.app.ram.includes(2)}
+              label="2 GB"
+              onClick={() => this.handleButton(2)}
+            />
+            <br />
+            <br />
+            <Checkbox
+              toggle
+              checked={this.props.app.ram.includes(4)}
+              label="4 GB"
+              onClick={() => this.handleButton(4)}
+            />
+            <br />
+            <br />
+            <Checkbox
+              toggle
+              checked={this.props.app.ram.includes(8)}
+              label="8 GB"
+              onClick={() => this.handleButton(8)}
+            />
+            <br />
+            <br />
+            <Checkbox
+              toggle
+              checked={this.props.app.ram.includes(16)}
+              label="16 GB"
+              onClick={() => this.handleButton(16)}
+            />
+            <br />
+            <br />
           </Segment>
         </Grid.Column>
       </Grid.Row>

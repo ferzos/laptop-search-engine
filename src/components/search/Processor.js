@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -49,35 +49,45 @@ class Processor extends Component {
           </Segment>
         </Grid.Column>
         <Grid.Column width={8}>
-          <Segment basic vertical textAlign="center">
+          <Segment basic vertical>
             <Header
               as="h3"
               content="Pilih Processormu"
               className="text-bold"
               size="large"
             />
-            <Button.Group vertical>
-              <Button
-                active={this.props.app.processor.includes('i3')}
-                content="Intel i3"
-                onClick={() => this.handleButton('i3')}
-              />
-              <Button
-                active={this.props.app.processor.includes('i5')}
-                content="Intel i5"
-                onClick={() => this.handleButton('i5')}
-              />
-              <Button
-                active={this.props.app.processor.includes('i7')}
-                content="Intel i7"
-                onClick={() => this.handleButton('i7')}
-              />
-              <Button
-                active={this.props.app.processor.includes('amd')}
-                content="AMD"
-                onClick={() => this.handleButton('amd')}
-              />
-            </Button.Group>
+            <Checkbox
+              checked={this.props.app.processor.includes('i3')}
+              label="Intel i3"
+              toggle
+              onClick={() => this.handleButton('i3')}
+            />
+            <br />
+            <br />
+            <Checkbox
+              checked={this.props.app.processor.includes('i5')}
+              label="Intel i5"
+              toggle
+              onClick={() => this.handleButton('i5')}
+            />
+            <br />
+            <br />
+            <Checkbox
+              checked={this.props.app.processor.includes('i7')}
+              label="Intel i7"
+              toggle
+              onClick={() => this.handleButton('i7')}
+            />
+            <br />
+            <br />
+            <Checkbox
+              checked={this.props.app.processor.includes('amd')}
+              label="AMD"
+              toggle
+              onClick={() => this.handleButton('amd')}
+            />
+            <br />
+            <br />
           </Segment>
         </Grid.Column>
       </Grid.Row>

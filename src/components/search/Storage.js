@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -47,35 +47,45 @@ class Storage extends Component {
           </Segment>
         </Grid.Column>
         <Grid.Column width={8}>
-          <Segment basic vertical textAlign="center">
+          <Segment basic vertical>
             <Header
               as="h3"
               content="Pilih kapasitas HDDmu"
               className="text-bold"
               size="large"
             />
-            <Button.Group vertical>
-              <Button
-                active={this.props.app.storage.includes(256)}
-                content="256 GB"
-                onClick={() => this.handleButton(256)}
-              />
-              <Button
-                active={this.props.app.storage.includes(512)}
-                content="512 GB"
-                onClick={() => this.handleButton(512)}
-              />
-              <Button
-                active={this.props.app.storage.includes(1000)}
-                content="1 TB"
-                onClick={() => this.handleButton(1000)}
-              />
-              <Button
-                active={this.props.app.storage.includes(2000)}
-                content="2 TB"
-                onClick={() => this.handleButton(2000)}
-              />
-            </Button.Group>
+            <Checkbox
+              toggle
+              checked={this.props.app.storage.includes(256)}
+              label="256 GB"
+              onClick={() => this.handleButton(256)}
+            />
+            <br />
+            <br />
+            <Checkbox
+              toggle
+              checked={this.props.app.storage.includes(512)}
+              label="512 GB"
+              onClick={() => this.handleButton(512)}
+            />
+            <br />
+            <br />
+            <Checkbox
+              toggle
+              checked={this.props.app.storage.includes(1000)}
+              label="1 TB"
+              onClick={() => this.handleButton(1000)}
+            />
+            <br />
+            <br />
+            <Checkbox
+              toggle
+              checked={this.props.app.storage.includes(2000)}
+              label="2 TB"
+              onClick={() => this.handleButton(2000)}
+            />
+            <br />
+            <br />
           </Segment>
         </Grid.Column>
       </Grid.Row>

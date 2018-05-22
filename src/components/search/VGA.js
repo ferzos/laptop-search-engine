@@ -7,14 +7,21 @@ import GPUImage from '../../assets/gpu.png';
 import { selectGPU } from '../../actions';
 
 class VGA extends Component {
-  handleButton = data => {
+  handleButton = (brand, version = undefined) => {
     let newChosen = this.props.app.vga.slice();
+    const vgaObj = { brand, version };
 
-    if (newChosen.includes(data)) {
-      const filteredChosen = newChosen.filter(vga => vga !== data);
+    if (
+      newChosen.some(
+        vga => vga.brand === vgaObj.brand && vga.version === vgaObj.version
+      )
+    ) {
+      const filteredChosen = newChosen.filter(
+        vga => vga.version !== vgaObj.version
+      );
       this.props.selectGPU(filteredChosen);
     } else {
-      newChosen.push(data);
+      newChosen.push(vgaObj);
       this.props.selectGPU(newChosen);
     }
   };
@@ -57,40 +64,65 @@ class VGA extends Component {
                 <Grid.Column width={8} textAlign="center">
                   <Button.Group vertical>
                     <Button
-                      content="Radeon apapun"
-                      onClick={() => this.props.selectGPU('Radeon')}
-                    />
-                    <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'amd' && vga.version === 'r5'
+                      )}
                       content="Radeon R5"
-                      onClick={() => this.props.selectGPU('Radeon R5')}
+                      onClick={() => this.handleButton('amd', 'r5')}
                     />
                     <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'amd' && vga.version === 'r6'
+                      )}
                       content="Radeon R6"
-                      onClick={() => this.props.selectGPU('Radeon R6')}
+                      onClick={() => this.handleButton('amd', 'r6')}
                     />
                     <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'amd' && vga.version === 'r7'
+                      )}
                       content="Radeon R7"
-                      onClick={() => this.props.selectGPU('Radeon R7')}
+                      onClick={() => this.handleButton('amd', 'r7')}
                     />
                     <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'amd' && vga.version === 'r8'
+                      )}
                       content="Radeon R8"
-                      onClick={() => this.props.selectGPU('Radeon R8')}
+                      onClick={() => this.handleButton('amd', 'r8')}
+                    />
+                    <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'amd' && vga.version === undefined
+                      )}
+                      content="Radeon lainnya"
+                      onClick={() => this.handleButton('amd')}
                     />
                   </Button.Group>
                 </Grid.Column>
                 <Grid.Column width={8} textAlign="center">
                   <Button.Group vertical>
                     <Button
-                      content="Nvidia apapun"
-                      onClick={() => this.props.selectGPU('Nvidia')}
-                    />
-                    <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'nvidia' && vga.version === 'gt'
+                      )}
                       content="Nvidia GT"
-                      onClick={() => this.props.selectGPU('GT')}
+                      onClick={() => this.handleButton('nvidia', 'gt')}
                     />
                     <Button
+                      active={this.props.app.vga.some(
+                        vga => vga.brand === 'nvidia' && vga.version === 'gtx'
+                      )}
                       content="Nvidia GTX"
-                      onClick={() => this.props.selectGPU('GTX')}
+                      onClick={() => this.handleButton('nvidia', 'gtx')}
+                    />
+                    <Button
+                      active={this.props.app.vga.some(
+                        vga =>
+                          vga.brand === 'nvidia' && vga.version === undefined
+                      )}
+                      content="Nvidia lainnya"
+                      onClick={() => this.handleButton('nvidia')}
                     />
                   </Button.Group>
                 </Grid.Column>

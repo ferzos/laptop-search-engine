@@ -48,7 +48,7 @@ class VGA extends Component {
                 </i>
               </a>
             </p>
-            <Image src={GPUImage} alt="processor" size="small" />
+            <Image src={GPUImage} alt="gpu" size="small" />
           </Segment>
         </Grid.Column>
         <Grid.Column width={8}>

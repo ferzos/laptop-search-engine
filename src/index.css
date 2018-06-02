@@ -474,6 +474,10 @@ a {
   color: rgba(0, 0, 0, 0.6) !important;
 }
 
+.search .rangeslider-horizontal .rangeslider__fill {
+  background: #00bcd4;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .search {
     position: initial !important;
@@ -490,6 +494,9 @@ a {
 }
 .result .grid .cards .card .icon {
   color: #00bcd4 !important;
+}
+.result .grid .cards .card .content .header {
+  overflow-wrap: break-word;
 }
 
 .about .grid {

@@ -5,7 +5,7 @@ const initialState = {
   vga: [],
   ssd: undefined,
   brand: [],
-  maxPrice: [],
+  maxPrice: undefined,
 };
 
 export default function(state = initialState, action) {

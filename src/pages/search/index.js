@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Menu, Grid, Segment, Icon } from 'semantic-ui-react';
+import { Menu, Grid, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
@@ -96,11 +96,11 @@ class Search extends Component {
                   active={this.state.activeItem === 'Price'}
                   onClick={this.handleItemClick}
                 />
-                <Menu.Menu position="right">
+                {/* <Menu.Menu position="right">
                   <Menu.Item>
                     <Icon name="search" />
                   </Menu.Item>
-                </Menu.Menu>
+                </Menu.Menu> */}
               </Menu>
               <Segment>{this.buildSearch()}</Segment>
             </Grid.Column>

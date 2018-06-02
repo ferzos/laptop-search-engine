@@ -17,6 +17,9 @@ class Result extends Component {
     this.API = 'http://eggman.herokuapp.com/api/notebooks';
     this.state = {
       isNoResult: false,
+      isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ),
       data: [],
     };
   }
@@ -31,7 +34,6 @@ class Result extends Component {
         } else {
           self.setState({ isNoResult: true });
         }
-        console.log(this.props);
       })
       .catch(function(error) {
         console.log(error);
@@ -68,7 +70,11 @@ class Result extends Component {
         )
       );
 
-      return <Card.Group itemsPerRow={4}>{cards}</Card.Group>;
+      return (
+        <Card.Group itemsPerRow={this.state.isMobile ? 1 : 4}>
+          {cards}
+        </Card.Group>
+      );
     } else if (this.state.isNoResult) {
       return (
         <div className="no-laptop">
@@ -118,4 +124,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Result);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Result);

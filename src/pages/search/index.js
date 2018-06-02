@@ -44,7 +44,7 @@ class Search extends Component {
   }
 
   buildSSDMenu() {
-    return (this.props.app.storage.length === 1 &&
+    return (this.props.app.storage.length > 0 &&
       this.props.app.storage.includes(256)) ||
       this.props.app.storage.includes(512) ? (
       <Menu.Item

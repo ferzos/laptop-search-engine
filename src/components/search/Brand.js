@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment, Checkbox } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
@@ -14,6 +14,18 @@ class Brand extends Component {
       brands: [],
     };
   }
+
+  handleButton = data => {
+    let newChosen = this.props.app.brand.slice();
+
+    if (newChosen.includes(data)) {
+      const filteredChosen = newChosen.filter(brand => brand !== data);
+      this.props.selectBrand(filteredChosen);
+    } else {
+      newChosen.push(data);
+      this.props.selectBrand(newChosen);
+    }
+  };
 
   componentDidMount() {
     axios
@@ -39,12 +51,16 @@ class Brand extends Component {
       );
     } else {
       return this.state.brands.map((brand, i) => (
-        <Button
-          key={i}
-          content={brand}
-          size="massive"
-          onClick={() => this.props.selectBrand(brand)}
-        />
+        <React.Fragment key={i}>
+          <Checkbox
+            toggle
+            checked={this.props.app.brand.includes(brand)}
+            label={brand}
+            onClick={() => this.handleButton(brand)}
+          />
+          <br />
+          <br />
+        </React.Fragment>
       ));
     }
   }
@@ -65,21 +81,23 @@ class Brand extends Component {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column width={16}>
-          {this.buildButton()}
-          <Button
-            content="Tidak ada preferensi"
-            size="massive"
-            onClick={() => this.props.selectBrand('')}
-          />
-        </Grid.Column>
+        <Grid.Column width={16}>{this.buildButton()}</Grid.Column>
       </Grid.Row>
     </Grid>
   );
+}
+
+function mapStateToProps(state) {
+  return {
+    app: state.app,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectBrand }, dispatch);
 }
 
-export default connect('', mapDispatchToProps)(Brand);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Brand);

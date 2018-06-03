@@ -5,7 +5,7 @@ export default class AboutCard extends Component {
   render = () => (
     <Card>
       <Card.Content>
-        <Header as="h2">
+        <Header as="h3">
           <Icon name="mail" />
           ferdifenrir@gmail.com
         </Header>

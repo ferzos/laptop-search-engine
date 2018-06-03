@@ -25,7 +25,7 @@ class Processor extends Component {
         <Grid.Column width={8}>
           <Segment basic>
             <Header
-              as="h3"
+              as="h2"
               content="Processor"
               className="text-bold"
               size="huge"
@@ -51,7 +51,7 @@ class Processor extends Component {
         <Grid.Column width={8}>
           <Segment basic vertical>
             <Header
-              as="h3"
+              as="h2"
               content="Pilih Processormu"
               className="text-bold"
               size="large"
@@ -105,4 +105,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectProcessor }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Processor);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Processor);

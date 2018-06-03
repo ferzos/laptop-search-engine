@@ -23,7 +23,7 @@ export default class About extends Component {
           <Grid.Row>
             <Grid.Column width={6}>
               <Header
-                as="h3"
+                as="h2"
                 size="huge"
                 className="color-primary text-bold"
                 content="Saran dan Masukan"
@@ -32,7 +32,7 @@ export default class About extends Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <Header
-                as="h3"
+                as="h2"
                 size="huge"
                 className="color-primary text-bold"
                 content="Teknologi Proyek Mesin Pencari Laptop"

@@ -30,7 +30,7 @@ export default class LandingHeader extends Component {
       />
       <Button
         as={Link}
-        to="/search"
+        to="/cari"
         inverted
         size="huge"
         style={{

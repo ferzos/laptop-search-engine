@@ -26,7 +26,7 @@ class Storage extends Component {
       <Grid.Row>
         <Grid.Column width={8}>
           <Segment basic>
-            <Header as="h3" content="HDD" className="text-bold" size="huge" />
+            <Header as="h2" content="HDD" className="text-bold" size="huge" />
             <p>
               <i>Hard Disk Drive</i> adalah perangkat penyimpanan komputer yang
               berisi piringan magnet yang berputar pada kecepatan tinggi. HDD
@@ -49,7 +49,7 @@ class Storage extends Component {
         <Grid.Column width={8}>
           <Segment basic vertical>
             <Header
-              as="h3"
+              as="h2"
               content="Pilih kapasitas HDDmu"
               className="text-bold"
               size="large"
@@ -103,4 +103,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectStorage, selectSSD }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Storage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Storage);

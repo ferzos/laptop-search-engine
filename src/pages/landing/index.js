@@ -20,7 +20,7 @@ export default class Landing extends Component {
                   textAlign="center"
                   content="Apa Itu Mesin Pencari Laptop?"
                   className="text-xl"
-                  as="h3"
+                  as="h2"
                 />
                 <br />
                 <p className="text-md">
@@ -54,7 +54,7 @@ export default class Landing extends Component {
                   sesuai dengan spesifikasi yang diinginkan. Jika kamu memiliki
                   ide untuk pengembangan aplikasi ini silahkan hubungi saya pada
                   kontak{' '}
-                  <NavLink exact to="/about">
+                  <NavLink exact to="/tentang">
                     berikut.
                   </NavLink>
                 </p>
@@ -70,7 +70,7 @@ export default class Landing extends Component {
                   textAlign="center"
                   content="Cari Laptopmu Berdasarkan"
                   className="text-xl"
-                  as="h3"
+                  as="h2"
                 />
                 <br />
                 <LandingCard />

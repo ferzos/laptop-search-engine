@@ -12,7 +12,7 @@ class SSD extends Component {
       <Grid.Row>
         <Grid.Column width={8}>
           <Segment basic>
-            <Header as="h3" content="SSD" className="text-bold" size="huge" />
+            <Header as="h2" content="SSD" className="text-bold" size="huge" />
             <p>
               <i>Solid State Drive</i> adalah media penyimpanan elektronik yang
               dibangun dengan arsitektur dimana data disimpan secara elektronik
@@ -35,7 +35,7 @@ class SSD extends Component {
         <Grid.Column width={8} textAlign="center">
           <Segment basic>
             <Header
-              as="h3"
+              as="h2"
               content="Apakah kamu butuh SSD?"
               className="text-bold"
               size="large"
@@ -69,4 +69,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectSSD }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SSD);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SSD);

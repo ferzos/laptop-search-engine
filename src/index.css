@@ -411,7 +411,7 @@ a {
 .pusher .pusher-segment .secondary.menu {
   border: 0 !important;
 }
-.pusher .pusher-segment .secondary.menu h3 {
+.pusher .pusher-segment .secondary.menu h2 {
   color: #ffffff !important;
   margin: auto 0 !important;
 }
@@ -436,7 +436,7 @@ a {
   padding: 3em 0em !important;
   background: linear-gradient(to bottom, #0097a7, #00bcd4) !important;
 }
-.landing .filter h3 {
+.landing .filter h2 {
   color: #ffffff !important;
 }
 .landing .filter .icon {
@@ -487,7 +487,7 @@ a {
 .result .grid {
   padding-top: 5rem !important;
 }
-.result .grid .no-laptop h3,
+.result .grid .no-laptop h2,
 .result .grid .no-laptop .frown {
   color: #00bcd4 !important;
   width: 100%;

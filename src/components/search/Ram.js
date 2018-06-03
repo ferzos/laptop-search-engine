@@ -24,7 +24,7 @@ class Ram extends Component {
       <Grid.Row>
         <Grid.Column width={8}>
           <Segment basic>
-            <Header as="h3" content="Ram" className="text-bold" size="huge" />
+            <Header as="h2" content="Ram" className="text-bold" size="huge" />
             <p className="text-md text-wrap">
               <i>Random Access Memory</i> adalah suatu penyimpanan data yang
               digunakan dalam komputer, umumnya terletak di <i>motherboard</i>.
@@ -46,7 +46,7 @@ class Ram extends Component {
         <Grid.Column width={8}>
           <Segment basic vertical>
             <Header
-              as="h3"
+              as="h2"
               content="Pilih ukuran RAMmu"
               className="text-bold"
               size="large"
@@ -100,4 +100,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectRam }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Ram);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Ram);

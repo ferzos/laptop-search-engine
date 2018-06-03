@@ -42,7 +42,7 @@ class Brand extends Component {
     if (this.state.brands.length === 0) {
       return (
         <Header
-          as="h3"
+          as="h2"
           content="Sedang Memuat..."
           className="text-bold"
           size="huge"
@@ -71,7 +71,7 @@ class Brand extends Component {
         <Grid.Column width={16}>
           <Segment basic size="massive">
             <Header
-              as="h3"
+              as="h2"
               content="Merek"
               className="text-bold"
               size="huge"

@@ -79,7 +79,7 @@ class Result extends Component {
       return (
         <div className="no-laptop">
           <Header
-            as="h3"
+            as="h2"
             content="Tidak ada laptop dengan spesifikasi yang kamu inginkan"
             className="text-bold"
             size="huge"

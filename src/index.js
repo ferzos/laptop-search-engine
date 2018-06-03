@@ -19,9 +19,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/search" component={Search} />
-        <Route exact path="/result" component={Result} />
-        <Route exact path="/about" component={About} />
+        <Route exact path="/cari" component={Search} />
+        <Route exact path="/hasil" component={Result} />
+        <Route exact path="/tentang" component={About} />
       </Switch>
     </BrowserRouter>
   </Provider>,

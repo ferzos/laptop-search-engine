@@ -31,7 +31,7 @@ class VGA extends Component {
       <Grid.Row>
         <Grid.Column width={8}>
           <Segment basic>
-            <Header as="h3" content="GPU" className="text-bold" size="huge" />
+            <Header as="h2" content="GPU" className="text-bold" size="huge" />
             <p>
               <i>Graphics Processing Unit</i> adalah prosesor chip tunggal yang
               terutama digunakan untuk mengelola dan meningkatkan kinerja video
@@ -54,7 +54,7 @@ class VGA extends Component {
         <Grid.Column width={8}>
           <Segment basic vertical>
             <Header
-              as="h3"
+              as="h2"
               content="Pilih GPUmu"
               className="text-bold"
               size="large"
@@ -160,4 +160,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectGPU }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VGA);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VGA);

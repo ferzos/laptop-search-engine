@@ -33,7 +33,7 @@ class Brand extends Component {
         <Grid.Column width={16}>
           <Segment basic size="massive">
             <Header
-              as="h3"
+              as="h2"
               content="Harga"
               className="text-bold"
               size="huge"
@@ -45,7 +45,7 @@ class Brand extends Component {
       <Grid.Row>
         <Grid.Column width={16}>
           <Header
-            as="h3"
+            as="h2"
             content="Berapa harga maksimal laptopmu?"
             className="text-bold"
             size="huge"
@@ -68,7 +68,7 @@ class Brand extends Component {
       <Grid.Row>
         <Grid.Column width={16}>
           <Header
-            as="h3"
+            as="h2"
             content={this.formatCurrency(this.state.max)}
             className="text-bold"
             size="huge"
@@ -81,7 +81,7 @@ class Brand extends Component {
           <Button
             as={Link}
             className="button-search"
-            to="/result"
+            to="/hasil"
             content="Cari laptopku"
             size="massive"
             onClick={() => this.props.selectMaxPrice(this.state.max)}
@@ -96,4 +96,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectMaxPrice }, dispatch);
 }
 
-export default connect('', mapDispatchToProps)(Brand);
+export default connect(
+  '',
+  mapDispatchToProps
+)(Brand);

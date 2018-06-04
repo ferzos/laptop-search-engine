@@ -1,84 +1,36 @@
-# Ferzos React Template
-This project is a further development project base on [Create React App](https://github.com/facebookincubator/create-react-app) from facebook. This project have 2 branch:
-* master (if you don't need redux for your project)
-* with-redux (if you need redux for your project)
+# Laptop Search Engine
+
+Laptop Search Engines are an application that you can use to search your laptop according to your specifications. This search engine uses data from ENTERKomputer Indonesia so it can be ascertained that search results have or ever existed in Indonesia. These search engines are equipped with filtering features based on processor, RAM, capacity, brand, and price.
 
 ### Prerequisites
+
 ```
-npm or yarn
+Basic knowledge of:
+- REST API
+- React
+- Redux
+- CSS Preprocessor
 ```
+
 ### Installing
-```
-open package.json
-change the project's name (and/or project's version if necessary)
-npm install or yarn install
-```
 
-### Project Structure
 ```
-.
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-├── src
-│   ├── actions                   # Add your action here
-│   │   └── app.js
-│   ├── assets
-│   │   └── logo.svg
-│   ├── components
-│   │   └── Heading.js
-│   ├── pages
-│   │   └── App.js
-│   ├── reducers                  # Add your reducer here
-│   │   ├── index.js
-│   │   └── reducer-app.js
-│   ├── style
-│   │   ├── sass
-│   │   │   ├── web               # Add new style here
-│   │   │   │   └── _app.scss
-│   │   │   ├── _color.scss       # Application color style
-│   │   │   ├── _font.scss        # Application font style
-│   │   │   ├── _normalize.scss   # Normalize style
-│   │   │   └── _utils.scss       # Utility style
-│   │   └── index.scss            # Entry point for sass
-│   ├── __tests__
-│   │   └── App.test.js
-│   ├── index.css                 # Compiled sass result
-│   ├── index.js
-│   ├── registerServiceWorker.js
-│   └── store.js
-├── package.json
-└── README.md
-```
-
-## Notes
-```
-1. File naming on scss file: always start with "_"
-Example: _example.scss
-
-2. If you make a new scss file under web folder, don't forget to import it. Write it in index.scss
-Example: @import 'sass/web/example';
-
-3. If you make a new reducer file under reducers folder, don't forget to add it. Write it in index.js
-Example: 
-  const Reducers = combineReducers({
-    app: AppReducer,
-    new: NewReducer
-  });
+1. Make sure your node version is 9.3.0
+   if you using nvm: 
+   1.1. nvm install 9.3.0
+   1.2. nvm use 9.3.0
+2. npm install
 ```
 
 ## Built With
 
-* [Create React App](https://github.com/facebookincubator/create-react-app) - From Facebook
+* [React](https://reactjs.org/) - Frontend framework
+* [Axios](https://github.com/axios/axios) - Promise based HTTP client
 * [Sass](https://sass-lang.com/) - CSS Preprocessor
-* [React Fontawesome](https://github.com/FortAwesome/react-fontawesome) - Icon Library
-* [React Router](https://github.com/ReactTraining/react-router)
-* [Husky](https://github.com/typicode/husky)
-* [Lint-Staged](https://github.com/okonet/lint-staged)
-* [Prettier](https://github.com/prettier/prettier) - Code Formatter
-* [Redux](https://redux.js.org/) - State container 
-* [React Redux](https://github.com/reactjs/react-redux)
+* [Redux](https://redux.js.org/) - State container
+* [React Semantic](https://react.semantic-ui.com/introduction) - CSS Library
+
+
 ## Authors
 
-* **Ferdinand**
+* **Ferdinand Chandra** - [ferzos](https://github.com/ferzos)

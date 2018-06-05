@@ -81,7 +81,6 @@ class Search extends Component {
                   active={this.state.activeItem === 'Storage'}
                   onClick={this.handleItemClick}
                 />
-                {this.buildSSDMenu()}
                 <Menu.Item
                   name="GPU"
                   active={this.state.activeItem === 'GPU'}

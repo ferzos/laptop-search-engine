@@ -36,7 +36,7 @@ export default class MobileSidebar extends Component {
 
   headerBuilder = () => {
     if (!this.state.isLanding)
-      return <Header as="h1" content="Mesin Pencari Laptop" />;
+      return <Header as="h2" content="Mesin Pencari Laptop" />;
   };
 
   menuBuilder = () => (

@@ -446,6 +446,14 @@ a {
 .search .search-container {
   padding-top: 5rem !important;
 }
+.search .search-container .label {
+  margin: 0.2rem !important;
+  background: #00bcd4;
+  color: #ffffff;
+}
+.search .search-container .label .icon.close {
+  color: #f44336;
+}
 .search .search-container .pointing.menu {
   overflow-x: auto;
   overflow-y: hidden;

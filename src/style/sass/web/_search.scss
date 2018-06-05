@@ -2,6 +2,15 @@
   .search-container {
     padding-top: 5rem !important;
 
+    .label {
+      margin: 0.2rem !important;
+      background: $color-primary;
+      color: #ffffff;
+      .icon.close {
+        color: #f44336;
+      }
+    }
+
     .pointing.menu {
       overflow-x: auto;
       overflow-y: hidden;

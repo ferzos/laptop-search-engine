@@ -8,7 +8,7 @@ import { selectGPUBrand, selectGPUVersion } from '../../actions';
 
 class VGA extends Component {
   handleButton = (brand, version = undefined) => {
-    // let newChosenBrand = this.props.app.vgaBrand.slice();
+    let newChosenBrand = this.props.app.vgaBrand.slice();
     let newChosenVersion = this.props.app.vgaVersion.slice();
 
     if (version === undefined) {
@@ -20,29 +20,46 @@ class VGA extends Component {
       //   this.props.selectGPUVersion(filteredChosen);
       // }
       this.props.selectGPUVersion([]);
-      // if (newChosenBrand.includes(brand)) {
-      //   const filteredChosen = newChosenBrand.filter(brand2 => brand2 !== brand);
-      //   this.props.selectGPUBrand(filteredChosen);
-      // } else {
-      //   newChosenBrand.push(brand);
-      //   this.props.selectGPUBrand(newChosenBrand);
-      // }
-      this.props.selectGPUBrand([brand]);
+      if (newChosenBrand.includes(brand)) {
+        const filteredChosen = newChosenBrand.filter(
+          brand2 => brand2 !== brand
+        );
+        this.props.selectGPUBrand(filteredChosen);
+      } else {
+        newChosenBrand.push(brand);
+        this.props.selectGPUBrand(newChosenBrand);
+      }
+      // this.props.selectGPUBrand([brand]);
     } else {
       if (newChosenVersion.includes(version)) {
         const filteredChosen = newChosenVersion.filter(
           version2 => version2 !== version
         );
         this.props.selectGPUVersion(filteredChosen);
+        this.props.selectGPUBrand(this.pullBrand(version));
       } else {
         newChosenVersion.push(version);
         this.props.selectGPUVersion(newChosenVersion);
+        this.props.selectGPUBrand(this.pushBrand(version));
       }
-      this.props.selectGPUBrand(this.chooseBrand(version));
     }
   };
 
-  chooseBrand(version) {
+  pullBrand(version) {
+    let newBrand = this.props.app.vgaBrand.slice();
+    if (version === 'gt' || version === 'gtx')
+      newBrand.splice(newBrand.indexOf('nvidia'), 1);
+    if (
+      version === 'r5' ||
+      version === 'r6' ||
+      version === 'r7' ||
+      version === 'r8'
+    )
+      newBrand.splice(newBrand.indexOf('amd'), 1);
+    return newBrand;
+  }
+
+  pushBrand(version) {
     let newBrand = this.props.app.vgaBrand.slice();
     if (version === 'gt' || version === 'gtx') newBrand.push('nvidia');
     if (

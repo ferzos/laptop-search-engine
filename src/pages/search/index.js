@@ -8,7 +8,6 @@ import Processor from '../../components/search/Processor';
 import Ram from '../../components/search/Ram';
 import Storage from '../../components/search/Storage';
 import VGA from '../../components/search/VGA';
-import SSD from '../../components/search/SSD';
 import Brand from '../../components/search/Brand';
 import Price from '../../components/search/Price';
 
@@ -34,27 +33,11 @@ class Search extends Component {
       return <VGA />;
     } else if (this.state.activeItem === 'Storage') {
       return <Storage />;
-    } else if (this.state.activeItem === 'SSD') {
-      return <SSD />;
     } else if (this.state.activeItem === 'Brand') {
       return <Brand />;
     } else if (this.state.activeItem === 'Price') {
       return <Price />;
     }
-  }
-
-  buildSSDMenu() {
-    return (this.props.app.storage.length > 0 &&
-      this.props.app.storage.includes(256)) ||
-      this.props.app.storage.includes(512) ? (
-      <Menu.Item
-        name="SSD"
-        active={this.state.activeItem === 'SSD'}
-        onClick={this.handleItemClick}
-      />
-    ) : (
-      ''
-    );
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });

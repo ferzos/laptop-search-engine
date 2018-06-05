@@ -4,27 +4,56 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import GPUImage from '../../assets/gpu.png';
-import { selectGPU } from '../../actions';
+import { selectGPUBrand, selectGPUVersion } from '../../actions';
 
 class VGA extends Component {
   handleButton = (brand, version = undefined) => {
-    let newChosen = this.props.app.vga.slice();
-    const vgaObj = { brand, version };
+    // let newChosenBrand = this.props.app.vgaBrand.slice();
+    let newChosenVersion = this.props.app.vgaVersion.slice();
 
-    if (
-      newChosen.some(
-        vga => vga.brand === vgaObj.brand && vga.version === vgaObj.version
-      )
-    ) {
-      const filteredChosen = newChosen.filter(
-        vga => vga.version !== vgaObj.version
-      );
-      this.props.selectGPU(filteredChosen);
+    if (version === undefined) {
+      // if (brand == 'nvidia') {
+      //   const filteredChosen = newChosenVersion.filter(version2 => version2 !== 'gt' || version2 !== 'gtx');
+      //   this.props.selectGPUVersion(filteredChosen);
+      // } else {
+      //   const filteredChosen = newChosenVersion.filter(version2 => version2 !== 'r5' || version2 !== 'r6' || version2 !== 'r7' || version2 !== 'r8');
+      //   this.props.selectGPUVersion(filteredChosen);
+      // }
+      this.props.selectGPUVersion([]);
+      // if (newChosenBrand.includes(brand)) {
+      //   const filteredChosen = newChosenBrand.filter(brand2 => brand2 !== brand);
+      //   this.props.selectGPUBrand(filteredChosen);
+      // } else {
+      //   newChosenBrand.push(brand);
+      //   this.props.selectGPUBrand(newChosenBrand);
+      // }
+      this.props.selectGPUBrand([brand]);
     } else {
-      newChosen.push(vgaObj);
-      this.props.selectGPU(newChosen);
+      if (newChosenVersion.includes(version)) {
+        const filteredChosen = newChosenVersion.filter(
+          version2 => version2 !== version
+        );
+        this.props.selectGPUVersion(filteredChosen);
+      } else {
+        newChosenVersion.push(version);
+        this.props.selectGPUVersion(newChosenVersion);
+      }
+      this.props.selectGPUBrand(this.chooseBrand(version));
     }
   };
+
+  chooseBrand(version) {
+    let newBrand = this.props.app.vgaBrand.slice();
+    if (version === 'gt' || version === 'gtx') newBrand.push('nvidia');
+    if (
+      version === 'r5' ||
+      version === 'r6' ||
+      version === 'r7' ||
+      version === 'r8'
+    )
+      newBrand.push('amd');
+    return newBrand;
+  }
 
   render = () => (
     <Grid centered container stackable>
@@ -63,9 +92,7 @@ class VGA extends Component {
               <Grid.Row>
                 <Grid.Column width={8}>
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'amd' && vga.version === 'r5'
-                    )}
+                    checked={this.props.app.vgaVersion.includes('r5')}
                     label="Radeon R5"
                     toggle
                     onClick={() => this.handleButton('amd', 'r5')}
@@ -73,9 +100,7 @@ class VGA extends Component {
                   <br />
                   <br />
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'amd' && vga.version === 'r6'
-                    )}
+                    checked={this.props.app.vgaVersion.includes('r6')}
                     label="Radeon R6"
                     toggle
                     onClick={() => this.handleButton('amd', 'r6')}
@@ -83,9 +108,7 @@ class VGA extends Component {
                   <br />
                   <br />
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'amd' && vga.version === 'r7'
-                    )}
+                    checked={this.props.app.vgaVersion.includes('r7')}
                     label="Radeon R7"
                     toggle
                     onClick={() => this.handleButton('amd', 'r7')}
@@ -93,9 +116,7 @@ class VGA extends Component {
                   <br />
                   <br />
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'amd' && vga.version === 'r8'
-                    )}
+                    checked={this.props.app.vgaVersion.includes('r8')}
                     label="Radeon R8"
                     toggle
                     onClick={() => this.handleButton('amd', 'r8')}
@@ -103,19 +124,18 @@ class VGA extends Component {
                   <br />
                   <br />
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'amd' && vga.version === undefined
-                    )}
-                    label="Radeon lainnya"
+                    checked={
+                      this.props.app.vgaBrand.includes('amd') &&
+                      this.props.app.vgaVersion.length === 0
+                    }
+                    label="Radeon apapun"
                     toggle
                     onClick={() => this.handleButton('amd')}
                   />
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'nvidia' && vga.version === 'gt'
-                    )}
+                    checked={this.props.app.vgaVersion.includes('gt')}
                     label="Nvidia GT"
                     toggle
                     onClick={() => this.handleButton('nvidia', 'gt')}
@@ -123,9 +143,7 @@ class VGA extends Component {
                   <br />
                   <br />
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'nvidia' && vga.version === 'gtx'
-                    )}
+                    checked={this.props.app.vgaVersion.includes('gtx')}
                     label="Nvidia GTX"
                     toggle
                     onClick={() => this.handleButton('nvidia', 'gtx')}
@@ -133,10 +151,11 @@ class VGA extends Component {
                   <br />
                   <br />
                   <Checkbox
-                    checked={this.props.app.vga.some(
-                      vga => vga.brand === 'nvidia' && vga.version === undefined
-                    )}
-                    label="Nvidia lainnya"
+                    checked={
+                      this.props.app.vgaBrand.includes('nvidia') &&
+                      this.props.app.vgaVersion.length === 0
+                    }
+                    label="Nvidia apapun"
                     toggle
                     onClick={() => this.handleButton('nvidia')}
                   />
@@ -157,7 +176,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectGPU }, dispatch);
+  return bindActionCreators({ selectGPUBrand, selectGPUVersion }, dispatch);
 }
 
 export default connect(

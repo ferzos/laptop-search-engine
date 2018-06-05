@@ -10,8 +10,12 @@ export const selectStorage = storage => {
   return { type: 'SELECT_STORAGE', payload: storage };
 };
 
-export const selectGPU = gpu => {
-  return { type: 'SELECT_GPU', payload: gpu };
+export const selectGPUBrand = gpu => {
+  return { type: 'SELECT_GPUBrand', payload: gpu };
+};
+
+export const selectGPUVersion = gpu => {
+  return { type: 'SELECT_GPUVersion', payload: gpu };
 };
 
 export const selectSSD = ssd => {

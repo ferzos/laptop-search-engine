@@ -2,7 +2,8 @@ const initialState = {
   processor: [],
   ram: [],
   storage: [],
-  vga: [],
+  vgaBrand: [],
+  vgaVersion: [],
   ssd: undefined,
   brand: [],
   maxPrice: undefined,
@@ -16,8 +17,10 @@ export default function(state = initialState, action) {
       return { ...state, ram: action.payload };
     case 'SELECT_STORAGE':
       return { ...state, storage: action.payload };
-    case 'SELECT_GPU':
-      return { ...state, vga: action.payload };
+    case 'SELECT_GPUBrand':
+      return { ...state, vgaBrand: action.payload };
+    case 'SELECT_GPUVersion':
+      return { ...state, vgaVersion: action.payload };
     case 'SELECT_SSD':
       return { ...state, ssd: action.payload };
     case 'SELECT_BRAND':

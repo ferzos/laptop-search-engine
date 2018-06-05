@@ -23,7 +23,11 @@ export const selectBrand = brand => {
 };
 
 export const selectMaxPrice = maxPrice => {
-  return { type: 'SELECT_MAX_PRICE', payload: maxPrice };
+  if (maxPrice === 21000000) {
+    return { type: 'SELECT_MAX_PRICE', payload: undefined };
+  } else {
+    return { type: 'SELECT_MAX_PRICE', payload: maxPrice };
+  }
 };
 
 export const resetState = () => {

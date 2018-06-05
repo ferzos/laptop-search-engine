@@ -57,7 +57,7 @@ class Brand extends Component {
         <Grid.Column width={16}>
           <Slider
             min={2000000}
-            max={96000000}
+            max={21000000}
             step={1000000}
             value={this.state.max}
             tooltip={false}
@@ -69,7 +69,11 @@ class Brand extends Component {
         <Grid.Column width={16}>
           <Header
             as="h2"
-            content={this.formatCurrency(this.state.max)}
+            content={
+              this.state.max === 21000000
+                ? 'Rp 20.000.000++'
+                : this.formatCurrency(this.state.max)
+            }
             className="text-bold"
             size="huge"
             textAlign="center"

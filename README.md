@@ -20,6 +20,7 @@ Basic knowledge of:
    1.1. nvm install 9.3.0
    1.2. nvm use 9.3.0
 2. npm install
+3. npm run start
 ```
 
 ## Built With

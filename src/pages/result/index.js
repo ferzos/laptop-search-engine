@@ -59,12 +59,20 @@ class Result extends Component {
             <Card.Content header={name} />
             <Card.Content description={details.details} />
             <Card.Content extra>
-              {/* <Icon name="server" /> {details.processor} <br />
-              <Icon name="microchip" /> {details.ram} GB<br />
-              <Icon name="database" /> {this.parsingStorage(details.storage)}<br />
-              <Icon name="game" /> {details.vga}<br /> */}
               <Icon name="industry" /> {brand} <br />
               <Icon name="money" /> {this.formatCurrency(price)} <br />
+              <Icon name="warehouse" />
+              <a href={this.buildTokopediaLink(name)} target="_blank">
+                {' '}
+                Cari di Tokopedia{' '}
+              </a>{' '}
+              <br />
+              <Icon name="warehouse" />
+              <a href={this.buildBukalapakLink(name)} target="_blank">
+                {' '}
+                Cari di Bukalapak{' '}
+              </a>{' '}
+              <br />
             </Card.Content>
           </Card>
         )
@@ -99,6 +107,20 @@ class Result extends Component {
         />
       );
     }
+  }
+
+  buildTokopediaLink(name) {
+    return `https://www.tokopedia.com/search?st=product&q=${name.replace(
+      / /g,
+      '+'
+    )}`;
+  }
+
+  buildBukalapakLink(name) {
+    return `https://www.bukalapak.com/products?keywords=${name.replace(
+      / /g,
+      '+'
+    )}`;
   }
 
   render = () => (

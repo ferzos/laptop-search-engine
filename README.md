@@ -1,4 +1,6 @@
 # Laptop Search Engine
+[![pipeline status](https://gitlab.com/ferzos/laptop-search-engine/badges/master/pipeline.svg)](https://gitlab.com/ferzos/laptop-search-engine/commits/master)
+[![coverage report](https://gitlab.com/ferzos/laptop-search-engine/badges/master/coverage.svg)](https://gitlab.com/ferzos/laptop-search-engine/commits/master)
 
 Laptop Search Engines are an application that you can use to search your laptop according to your specifications. This search engine uses data from ENTERKomputer Indonesia so it can be ascertained that search results have or ever existed in Indonesia. These search engines are equipped with filtering features based on processor, RAM, capacity, brand, and price.
 

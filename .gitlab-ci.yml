@@ -1,6 +1,9 @@
 image: node:9.3.0
 
 pages:
+  cache:
+    paths:
+    - node_modules/
   stage: deploy
   script:
   - npm install

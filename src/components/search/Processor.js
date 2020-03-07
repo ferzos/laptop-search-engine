@@ -22,33 +22,7 @@ class Processor extends Component {
   render = () => (
     <Grid centered container stackable>
       <Grid.Row>
-        <Grid.Column width={8}>
-          <Segment basic>
-            <Header
-              as="h2"
-              content="Processor"
-              className="text-bold"
-              size="huge"
-            />
-            <p className="text-md text-wrap">
-              <i>Processor</i> adalah sirkuit elektronik terintegrasi yang
-              melakukan perhitungan untuk menjalankan komputer. Sebuah prosesor
-              melakukan operasi aritmatika, logis, <i>input</i> / <i>output</i>
-              (I / O) dan instruksi-instruksi dasar lainnya yang dikirim dari
-              sistem operasi (<i>Operating System</i>). <i>Processor</i> sering
-              juga disebut CPU (<i>Central Processing Unit</i>)
-              <br />
-              <a
-                className="text-sm"
-                href="https://www.techopedia.com/definition/28254/processor"
-              >
-                <i>https://www.techopedia.com/definition/28254/processor</i>
-              </a>
-            </p>
-            <Image src={ProcessorImage} alt="processor" size="medium" />
-          </Segment>
-        </Grid.Column>
-        <Grid.Column width={8}>
+        <Grid.Column width={5}>
           <Segment basic vertical>
             <Header
               as="h2"
@@ -90,6 +64,33 @@ class Processor extends Component {
             <br />
           </Segment>
         </Grid.Column>
+        <Grid.Column width={11}>
+          <Segment basic>
+            <Header
+              as="h2"
+              content="Processor"
+              className="text-bold"
+              size="huge"
+            />
+            <p className="text-lg text-wrap">
+              <i>Processor</i> adalah sirkuit elektronik terintegrasi yang
+              melakukan perhitungan untuk menjalankan komputer. Sebuah prosesor
+              melakukan operasi aritmatika, logis, <i>input</i> / <i>output</i>
+              (I / O) dan instruksi-instruksi dasar lainnya yang dikirim dari
+              sistem operasi (<i>Operating System</i>). <i>Processor</i> sering
+              juga disebut CPU (<i>Central Processing Unit</i>)
+              <br />
+              <a
+                target="_blank"
+                className="text-md"
+                href="https://www.techopedia.com/definition/28254/processor"
+              >
+                <i>https://www.techopedia.com/definition/28254/processor</i>
+              </a>
+            </p>
+            <Image src={ProcessorImage} alt="processor" size="medium" />
+          </Segment>
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   );
@@ -105,7 +106,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectProcessor }, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Processor);
+export default connect(mapStateToProps, mapDispatchToProps)(Processor);

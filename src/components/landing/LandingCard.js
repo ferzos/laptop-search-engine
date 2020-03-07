@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { Card, Icon } from 'semantic-ui-react';
+import { MENU } from '../../constant';
 
 export default class LandingCard extends Component {
   render() {
-    const cardsContent = [
-      { icon: 'server', title: 'Processor' },
-      { icon: 'microchip', title: 'RAM' },
-      { icon: 'game', title: 'Graphic Card' },
-      { icon: 'database', title: 'Kapasitas' },
-      { icon: 'industry', title: 'Merek' },
-      { icon: 'money', title: 'Harga' },
-    ];
+    const cardsContent = MENU;
 
     const cards = cardsContent.map(({ icon, title }) => (
       <Card key={title} centered>

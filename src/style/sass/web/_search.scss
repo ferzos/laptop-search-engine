@@ -41,12 +41,21 @@
     }
 
     .button-search {
-      color: rgba(0,0,0,.6) !important;
+      background-color: $color-primary !important;
+      color: $color-white !important;
+
+      .icon {
+        color: $color-white !important;
+      }
     }
   }
 
   .rangeslider-horizontal .rangeslider__fill {
     background: $color-primary;
+  }
+
+  .icon{
+    color: $color-primary !important;
   }
 }
 

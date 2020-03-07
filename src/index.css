@@ -6,6 +6,11 @@
   color: #ff5252 !important;
 }
 
+.color-white {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
 body {
   font-size: 100% !important;
 }
@@ -479,11 +484,19 @@ a {
   margin: 0 12px !important;
 }
 .search .search-container .button-search {
-  color: rgba(0, 0, 0, 0.6) !important;
+  background-color: #00bcd4 !important;
+  color: #ffffff !important;
+}
+.search .search-container .button-search .icon {
+  color: #ffffff !important;
 }
 
 .search .rangeslider-horizontal .rangeslider__fill {
   background: #00bcd4;
+}
+
+.search .icon {
+  color: #00bcd4 !important;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {

@@ -20,7 +20,7 @@ export default class LandingHeader extends Component {
       </Header>
       <Header
         as="h2"
-        content="Temukan Laptop Terbaikmu."
+        content="Temukan Laptop Terbaikmu"
         inverted
         className="text-normal"
         style={{

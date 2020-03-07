@@ -1,3 +1,5 @@
+const filterUnique = array => array.filter((v, i, a) => a.indexOf(v) === i);
+
 export const selectProcessor = processor => {
   return { type: 'SELECT_PROCESSOR', payload: processor };
 };
@@ -11,11 +13,11 @@ export const selectStorage = storage => {
 };
 
 export const selectGPUBrand = gpu => {
-  return { type: 'SELECT_GPUBrand', payload: gpu };
+  return { type: 'SELECT_GPUBrand', payload: filterUnique(gpu) };
 };
 
 export const selectGPUVersion = gpu => {
-  return { type: 'SELECT_GPUVersion', payload: gpu };
+  return { type: 'SELECT_GPUVersion', payload: filterUnique(gpu) };
 };
 
 export const selectSSD = ssd => {

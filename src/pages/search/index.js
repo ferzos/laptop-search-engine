@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Menu, Grid, Segment, Label, Icon } from 'semantic-ui-react';
+import { Menu, Grid, Segment, Label, Icon, Button } from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
 import Processor from '../../components/search/Processor';
@@ -11,6 +12,7 @@ import Storage from '../../components/search/Storage';
 import VGA from '../../components/search/VGA';
 import Brand from '../../components/search/Brand';
 import Price from '../../components/search/Price';
+import VerticalStepper from '../../components/search/VerticalStepper';
 
 import {
   selectProcessor,
@@ -20,6 +22,7 @@ import {
   selectGPUBrand,
   selectGPUVersion,
   selectBrand,
+  selectMaxPrice,
 } from '../../actions';
 
 class Search extends Component {
@@ -28,87 +31,13 @@ class Search extends Component {
     this.API = 'http://eggman.herokuapp.com/api';
     this.state = {
       activeItem: 'Processor',
+      // Price
+      max: Number(window.sessionStorage.getItem('maxPrice')) || 0,
     };
   }
 
   componentDidMount() {
     axios.get(`${this.API}/ping`);
-  }
-
-  buildProcessorLabel() {
-    return this.props.app.processor.map((processor, i) => (
-      <Label key={i} size="medium">
-        <Icon name="server" />Processor: {processor}
-        <Icon
-          name="close"
-          onClick={() => this.handleClose('processor', processor)}
-        />
-      </Label>
-    ));
-  }
-
-  buildRamLabel() {
-    return this.props.app.ram.map((ram, i) => (
-      <Label key={i} size="medium">
-        <Icon name="microchip" />RAM: {`${ram} GB`}
-        <Icon name="close" onClick={() => this.handleClose('ram', ram)} />
-      </Label>
-    ));
-  }
-
-  buildStorageLabel() {
-    return this.props.app.storage.map((storage, i) => (
-      <Label key={i} size="medium">
-        <Icon name="database" />Storage: {`${storage} GB`}
-        <Icon
-          name="close"
-          onClick={() => this.handleClose('storage', storage)}
-        />
-      </Label>
-    ));
-  }
-
-  buildSSDLabel() {
-    return this.props.app.ssd ? (
-      <Label size="medium">
-        SSD<Icon name="close" onClick={() => this.handleClose('ssd', false)} />
-      </Label>
-    ) : (
-      ''
-    );
-  }
-
-  buildVGALabel() {
-    if (this.props.app.vgaVersion.length === 0) {
-      return this.props.app.vgaBrand.map((vgaBrand, i) => (
-        <Label key={i} size="medium">
-          <Icon name="game" />GPU: {`${vgaBrand} apapun`}
-          <Icon
-            name="close"
-            onClick={() => this.handleClose('vgaBrand', vgaBrand)}
-          />
-        </Label>
-      ));
-    } else {
-      return this.props.app.vgaVersion.map((vgaVersion, i) => (
-        <Label key={i} size="medium">
-          <Icon name="game" />GPU: {`${vgaVersion}`}
-          <Icon
-            name="close"
-            onClick={() => this.handleClose('vgaVersion', vgaVersion)}
-          />
-        </Label>
-      ));
-    }
-  }
-
-  buildBrandLabel() {
-    return this.props.app.brand.map((brand, i) => (
-      <Label key={i} size="medium">
-        <Icon name="industry" />Brand: {`${brand}`}
-        <Icon name="close" onClick={() => this.handleClose('brand', brand)} />
-      </Label>
-    ));
   }
 
   buildSearch() {
@@ -123,11 +52,13 @@ class Search extends Component {
     } else if (this.state.activeItem === 'Brand') {
       return <Brand />;
     } else if (this.state.activeItem === 'Price') {
-      return <Price />;
+      return (
+        <Price price={this.state.max} onPriceChange={this.handlePriceChange} />
+      );
     }
   }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleItemClick = name => () => this.setState({ activeItem: name });
 
   handleClose(type, data) {
     switch (type) {
@@ -171,55 +102,41 @@ class Search extends Component {
     }
   }
 
+  handlePriceChange = value => {
+    window.sessionStorage.setItem('maxPrice', value);
+    this.setState({
+      max: value,
+    });
+  };
+
   render = () => (
     <div className="search">
       <ResponsiveContainer>
         <Grid className="search-container" centered container stackable>
-          {this.buildProcessorLabel()}
-          {this.buildRamLabel()}
-          {this.buildStorageLabel()}
-          {this.buildSSDLabel()}
-          {this.buildVGALabel()}
-          {this.buildBrandLabel()}
           <Grid.Row>
-            <Grid.Column width={16}>
-              <Menu pointing>
-                <Menu.Item
-                  name="Processor"
-                  active={this.state.activeItem === 'Processor'}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="Ram"
-                  active={this.state.activeItem === 'Ram'}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="Storage"
-                  active={this.state.activeItem === 'Storage'}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="GPU"
-                  active={this.state.activeItem === 'GPU'}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="Brand"
-                  active={this.state.activeItem === 'Brand'}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="Price"
-                  active={this.state.activeItem === 'Price'}
-                  onClick={this.handleItemClick}
-                />
-                {/* <Menu.Menu position="right">
-                  <Menu.Item>
-                    <Icon name="search" />
-                  </Menu.Item>
-                </Menu.Menu> */}
-              </Menu>
+            <Grid.Column width={4}>
+              <VerticalStepper
+                handlePriceChange={this.handlePriceChange}
+                price={this.state.max}
+                activeMenu={this.state.activeItem}
+                handleMenuClick={this.handleItemClick}
+              />
+              <Button
+                fluid
+                icon
+                labelPosition="left"
+                as={Link}
+                className="button-search"
+                to="/hasil"
+                size="massive"
+                color="blue"
+                onClick={() => this.props.selectMaxPrice(this.state.max)}
+              >
+                <Icon className="icon" name="search" />
+                Cari
+              </Button>
+            </Grid.Column>
+            <Grid.Column width={12}>
               <Segment>{this.buildSearch()}</Segment>
             </Grid.Column>
           </Grid.Row>
@@ -227,12 +144,6 @@ class Search extends Component {
       </ResponsiveContainer>
     </div>
   );
-}
-
-function mapStateToProps(state) {
-  return {
-    app: state.app,
-  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -245,12 +156,10 @@ function mapDispatchToProps(dispatch) {
       selectGPUBrand,
       selectGPUVersion,
       selectBrand,
+      selectMaxPrice,
     },
     dispatch
   );
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Search);
+export default connect(null, mapDispatchToProps)(Search);

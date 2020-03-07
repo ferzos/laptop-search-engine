@@ -30,44 +30,11 @@ class Storage extends Component {
   };
 
   buildSSDSegment() {
-    if (
-      this.props.app.storage.length > 0 &&
-      !this.props.app.storage.includes(1000) &&
-      !this.props.app.storage.includes(2000) &&
-      (this.props.app.storage.includes(256) ||
-        this.props.app.storage.includes(512))
-    ) {
+    if (this.props.app.storage.length > 0) {
       return (
         <Grid centered container stackable>
           <Grid.Row>
-            <Grid.Column width={8}>
-              <Segment basic>
-                <Header
-                  as="h2"
-                  content="SSD"
-                  className="text-bold"
-                  size="huge"
-                />
-                <p>
-                  <i>Solid State Drive</i> adalah media penyimpanan elektronik
-                  yang dibangun dengan arsitektur dimana data disimpan secara
-                  elektronik pada chip memori. Berbeda dengan HDD, SSD adalah
-                  perangkat penyimpanan elektronik sepenuhnya, dan unit fisiknya
-                  tidak mengandung benda-benda mekanis.
-                  <br />
-                  <a
-                    className="text-sm"
-                    href="https://www.techopedia.com/definition/2296/solid-state-drive-ssd"
-                  >
-                    <i>
-                      https://www.techopedia.com/definition/2296/solid-state-drive-ssd
-                    </i>
-                  </a>
-                </p>
-                <Image src={SSDImage} alt="processor" size="medium" />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column width={8} textAlign="center">
+            <Grid.Column width={5} textAlign="center">
               <Segment basic>
                 <Header
                   as="h2"
@@ -89,6 +56,33 @@ class Storage extends Component {
                 </Button.Group>
               </Segment>
             </Grid.Column>
+            <Grid.Column width={11}>
+              <Segment basic>
+                <Header
+                  as="h2"
+                  content="SSD"
+                  className="text-bold"
+                  size="huge"
+                />
+                <p>
+                  <i>Solid State Drive</i> adalah media penyimpanan elektronik
+                  yang dibangun dengan arsitektur dimana data disimpan secara
+                  elektronik pada chip memori. Berbeda dengan HDD, SSD adalah
+                  perangkat penyimpanan elektronik sepenuhnya, dan unit fisiknya
+                  tidak mengandung benda-benda mekanis.
+                  <br />
+                  <a
+                    className="text-md"
+                    href="https://www.techopedia.com/definition/2296/solid-state-drive-ssd"
+                  >
+                    <i>
+                      https://www.techopedia.com/definition/2296/solid-state-drive-ssd
+                    </i>
+                  </a>
+                </p>
+                <Image src={SSDImage} alt="processor" size="medium" />
+              </Segment>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       );
@@ -99,29 +93,7 @@ class Storage extends Component {
     <React.Fragment>
       <Grid centered container stackable>
         <Grid.Row>
-          <Grid.Column width={8}>
-            <Segment basic>
-              <Header as="h2" content="HDD" className="text-bold" size="huge" />
-              <p>
-                <i>Hard Disk Drive</i> adalah perangkat penyimpanan komputer
-                yang berisi piringan magnet yang berputar pada kecepatan tinggi.
-                HDD merupakan perangkat penyimpanan sekunder yang digunakan
-                untuk menyimpan data secara permanen. Data yang disimpan pada
-                HDD tidak akan hilang saat komputer dimatikan.
-                <br />
-                <a
-                  className="text-sm"
-                  href="https://www.techopedia.com/definition/5288/hard-disk-drive"
-                >
-                  <i>
-                    https://www.techopedia.com/definition/5288/hard-disk-drive
-                  </i>
-                </a>
-              </p>
-              <Image src={HDDImage} alt="hdd" size="small" />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column width={5}>
             <Segment basic vertical>
               <Header
                 as="h2"
@@ -163,6 +135,28 @@ class Storage extends Component {
               <br />
             </Segment>
           </Grid.Column>
+          <Grid.Column width={11}>
+            <Segment basic>
+              <Header as="h2" content="HDD" className="text-bold" size="huge" />
+              <p className="text-lg">
+                <i>Hard Disk Drive</i> adalah perangkat penyimpanan komputer
+                yang berisi piringan magnet yang berputar pada kecepatan tinggi.
+                HDD merupakan perangkat penyimpanan sekunder yang digunakan
+                untuk menyimpan data secara permanen. Data yang disimpan pada
+                HDD tidak akan hilang saat komputer dimatikan.
+                <br />
+                <a
+                  className="text-md"
+                  href="https://www.techopedia.com/definition/5288/hard-disk-drive"
+                >
+                  <i>
+                    https://www.techopedia.com/definition/5288/hard-disk-drive
+                  </i>
+                </a>
+              </p>
+              <Image src={HDDImage} alt="hdd" size="small" />
+            </Segment>
+          </Grid.Column>
         </Grid.Row>
       </Grid>
       {this.buildSSDSegment()}
@@ -180,7 +174,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectStorage, selectSSD }, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Storage);
+export default connect(mapStateToProps, mapDispatchToProps)(Storage);

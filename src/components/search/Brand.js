@@ -50,7 +50,7 @@ class Brand extends Component {
         />
       );
     } else {
-      return this.state.brands.map((brand, i) => (
+      return this.state.brands.sort().map((brand, i) => (
         <React.Fragment key={i}>
           <Checkbox
             toggle
@@ -97,7 +97,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectBrand }, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Brand);
+export default connect(mapStateToProps, mapDispatchToProps)(Brand);

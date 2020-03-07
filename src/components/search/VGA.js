@@ -7,96 +7,76 @@ import GPUImage from '../../assets/gpu.png';
 import { selectGPUBrand, selectGPUVersion } from '../../actions';
 
 class VGA extends Component {
-  handleButton = (brand, version = undefined) => {
-    let newChosenBrand = this.props.app.vgaBrand.slice();
-    let newChosenVersion = this.props.app.vgaVersion.slice();
+  noAMD = () => {
+    const { vgaVersion } = this.props.app;
 
-    if (version === undefined) {
-      // if (brand == 'nvidia') {
-      //   const filteredChosen = newChosenVersion.filter(version2 => version2 !== 'gt' || version2 !== 'gtx');
-      //   this.props.selectGPUVersion(filteredChosen);
-      // } else {
-      //   const filteredChosen = newChosenVersion.filter(version2 => version2 !== 'r5' || version2 !== 'r6' || version2 !== 'r7' || version2 !== 'r8');
-      //   this.props.selectGPUVersion(filteredChosen);
-      // }
-      this.props.selectGPUVersion([]);
-      if (newChosenBrand.includes(brand)) {
-        const filteredChosen = newChosenBrand.filter(
-          brand2 => brand2 !== brand
+    return (
+      !vgaVersion.includes('r5') &&
+      !vgaVersion.includes('r6') &&
+      !vgaVersion.includes('r7') &&
+      !vgaVersion.includes('r8')
+    );
+  };
+
+  noNvidia = () => {
+    const { vgaVersion } = this.props.app;
+
+    return !vgaVersion.includes('gt') && !vgaVersion.includes('gtx');
+  };
+
+  getFilteredGPUVersion = brand => {
+    if (brand === 'amd') {
+      return this.props.app.vgaVersion
+        .slice()
+        .filter(
+          version =>
+            version !== 'r5' &&
+            version !== 'r6' &&
+            version !== 'r7' &&
+            version !== 'r8'
         );
-        this.props.selectGPUBrand(filteredChosen);
-      } else {
-        newChosenBrand.push(brand);
-        this.props.selectGPUBrand(newChosenBrand);
+    } else if (brand === 'nvidia') {
+      return this.props.app.vgaVersion
+        .slice()
+        .filter(version => version !== 'gt' && version !== 'gtx');
+    }
+  };
+
+  handleButton = (brand, version = undefined) => (e, data) => {
+    const { vgaBrand, vgaVersion } = this.props.app;
+    const { checked } = data;
+
+    // If user choose any vga brand
+    if (version === undefined) {
+      if (checked) {
+        this.props.selectGPUBrand([...vgaBrand, brand]);
+        this.props.selectGPUVersion(this.getFilteredGPUVersion(brand));
+      } else if (!checked) {
+        this.props.selectGPUBrand(vgaBrand.filter(brand2 => brand2 !== brand));
       }
-      // this.props.selectGPUBrand([brand]);
     } else {
-      if (newChosenVersion.includes(version)) {
-        const filteredChosen = newChosenVersion.filter(
+      // user checked box
+      if (checked) {
+        this.props.selectGPUBrand([...vgaBrand, brand]);
+        this.props.selectGPUVersion([...vgaVersion, version]);
+      } else if (!checked) {
+        const newGPUVersion = vgaVersion.filter(
           version2 => version2 !== version
         );
-        this.props.selectGPUVersion(filteredChosen);
-        this.props.selectGPUBrand(this.pullBrand(version));
-      } else {
-        newChosenVersion.push(version);
-        this.props.selectGPUVersion(newChosenVersion);
-        this.props.selectGPUBrand(this.pushBrand(version));
+        this.props.selectGPUVersion(newGPUVersion);
+
+        if (newGPUVersion.length === 0) {
+          this.props.selectGPUBrand(
+            vgaBrand.filter(brand2 => brand2 !== brand)
+          );
+        }
       }
     }
   };
 
-  pullBrand(version) {
-    let newBrand = this.props.app.vgaBrand.slice();
-    if (version === 'gt' || version === 'gtx')
-      newBrand.splice(newBrand.indexOf('nvidia'), 1);
-    if (
-      version === 'r5' ||
-      version === 'r6' ||
-      version === 'r7' ||
-      version === 'r8'
-    )
-      newBrand.splice(newBrand.indexOf('amd'), 1);
-    return newBrand;
-  }
-
-  pushBrand(version) {
-    let newBrand = this.props.app.vgaBrand.slice();
-    if (version === 'gt' || version === 'gtx') newBrand.push('nvidia');
-    if (
-      version === 'r5' ||
-      version === 'r6' ||
-      version === 'r7' ||
-      version === 'r8'
-    )
-      newBrand.push('amd');
-    return newBrand;
-  }
-
   render = () => (
     <Grid centered container stackable>
       <Grid.Row>
-        <Grid.Column width={8}>
-          <Segment basic>
-            <Header as="h2" content="GPU" className="text-bold" size="huge" />
-            <p>
-              <i>Graphics Processing Unit</i> adalah prosesor chip tunggal yang
-              terutama digunakan untuk mengelola dan meningkatkan kinerja video
-              dan grafik. GPU digunakan untuk grafika 2D atau 3D, pemetaan
-              tekstur, perangkat lunak grafis dengan intensitas tinggi seperti
-              AutoCAD, dsb.
-              <br />
-              <a
-                className="text-sm"
-                href="https://www.techopedia.com/definition/24862/graphics-processing-unit-gpu"
-              >
-                <i>
-                  https://www.techopedia.com/definition/24862/graphics-processing-unit-gpu
-                </i>
-              </a>
-            </p>
-            <Image src={GPUImage} alt="gpu" size="small" />
-          </Segment>
-        </Grid.Column>
         <Grid.Column width={8}>
           <Segment basic vertical>
             <Header
@@ -112,7 +92,7 @@ class VGA extends Component {
                     checked={this.props.app.vgaVersion.includes('r5')}
                     label="Radeon R5"
                     toggle
-                    onClick={() => this.handleButton('amd', 'r5')}
+                    onClick={this.handleButton('amd', 'r5')}
                   />
                   <br />
                   <br />
@@ -120,7 +100,7 @@ class VGA extends Component {
                     checked={this.props.app.vgaVersion.includes('r6')}
                     label="Radeon R6"
                     toggle
-                    onClick={() => this.handleButton('amd', 'r6')}
+                    onClick={this.handleButton('amd', 'r6')}
                   />
                   <br />
                   <br />
@@ -128,7 +108,7 @@ class VGA extends Component {
                     checked={this.props.app.vgaVersion.includes('r7')}
                     label="Radeon R7"
                     toggle
-                    onClick={() => this.handleButton('amd', 'r7')}
+                    onClick={this.handleButton('amd', 'r7')}
                   />
                   <br />
                   <br />
@@ -136,18 +116,17 @@ class VGA extends Component {
                     checked={this.props.app.vgaVersion.includes('r8')}
                     label="Radeon R8"
                     toggle
-                    onClick={() => this.handleButton('amd', 'r8')}
+                    onClick={this.handleButton('amd', 'r8')}
                   />
                   <br />
                   <br />
                   <Checkbox
                     checked={
-                      this.props.app.vgaBrand.includes('amd') &&
-                      this.props.app.vgaVersion.length === 0
+                      this.props.app.vgaBrand.includes('amd') && this.noAMD()
                     }
                     label="Radeon apapun"
                     toggle
-                    onClick={() => this.handleButton('amd')}
+                    onClick={this.handleButton('amd')}
                   />
                 </Grid.Column>
                 <Grid.Column width={8}>
@@ -155,7 +134,7 @@ class VGA extends Component {
                     checked={this.props.app.vgaVersion.includes('gt')}
                     label="Nvidia GT"
                     toggle
-                    onClick={() => this.handleButton('nvidia', 'gt')}
+                    onClick={this.handleButton('nvidia', 'gt')}
                   />
                   <br />
                   <br />
@@ -163,22 +142,44 @@ class VGA extends Component {
                     checked={this.props.app.vgaVersion.includes('gtx')}
                     label="Nvidia GTX"
                     toggle
-                    onClick={() => this.handleButton('nvidia', 'gtx')}
+                    onClick={this.handleButton('nvidia', 'gtx')}
                   />
                   <br />
                   <br />
                   <Checkbox
                     checked={
                       this.props.app.vgaBrand.includes('nvidia') &&
-                      this.props.app.vgaVersion.length === 0
+                      this.noNvidia()
                     }
                     label="Nvidia apapun"
                     toggle
-                    onClick={() => this.handleButton('nvidia')}
+                    onClick={this.handleButton('nvidia')}
                   />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
+          </Segment>
+        </Grid.Column>
+        <Grid.Column width={8}>
+          <Segment basic>
+            <Header as="h2" content="GPU" className="text-bold" size="huge" />
+            <p className="text-lg">
+              <i>Graphics Processing Unit</i> adalah prosesor chip tunggal yang
+              terutama digunakan untuk mengelola dan meningkatkan kinerja video
+              dan grafik. GPU digunakan untuk grafika 2D atau 3D, pemetaan
+              tekstur, perangkat lunak grafis dengan intensitas tinggi seperti
+              AutoCAD, dsb.
+              <br />
+              <a
+                className="text-md"
+                href="https://www.techopedia.com/definition/24862/graphics-processing-unit-gpu"
+              >
+                <i>
+                  https://www.techopedia.com/definition/24862/graphics-processing-unit-gpu
+                </i>
+              </a>
+            </p>
+            <Image src={GPUImage} alt="gpu" size="small" />
           </Segment>
         </Grid.Column>
       </Grid.Row>
@@ -196,7 +197,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectGPUBrand, selectGPUVersion }, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(VGA);
+export default connect(mapStateToProps, mapDispatchToProps)(VGA);

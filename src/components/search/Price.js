@@ -1,28 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Header, Segment, Button } from 'semantic-ui-react';
+import { Grid, Header, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
 
-import { selectMaxPrice } from '../../actions';
-
-class Brand extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      max: 2000000,
-    };
-  }
-
-  handleOnChange = value => {
-    this.setState({
-      max: value,
-    });
-  };
-
+class Price extends Component {
   formatCurrency(value) {
     return `Rp. ${value.toLocaleString('en').replace(/,/g, '.')}`;
   }
@@ -59,9 +42,9 @@ class Brand extends Component {
             min={2000000}
             max={21000000}
             step={1000000}
-            value={this.state.max}
+            value={this.props.price}
             tooltip={false}
-            onChange={this.handleOnChange}
+            onChange={this.props.onPriceChange}
           />
         </Grid.Column>
       </Grid.Row>
@@ -70,9 +53,9 @@ class Brand extends Component {
           <Header
             as="h2"
             content={
-              this.state.max === 21000000
+              this.props.price === 21000000
                 ? 'Rp 20.000.000++'
-                : this.formatCurrency(this.state.max)
+                : this.formatCurrency(this.props.price)
             }
             className="text-bold"
             size="huge"
@@ -80,27 +63,8 @@ class Brand extends Component {
           />
         </Grid.Column>
       </Grid.Row>
-      <Grid.Row>
-        <Grid.Column width={16} textAlign="center">
-          <Button
-            as={Link}
-            className="button-search"
-            to="/hasil"
-            content="Cari laptopku"
-            size="massive"
-            onClick={() => this.props.selectMaxPrice(this.state.max)}
-          />
-        </Grid.Column>
-      </Grid.Row>
     </Grid>
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectMaxPrice }, dispatch);
-}
-
-export default connect(
-  '',
-  mapDispatchToProps
-)(Brand);
+export default Price;

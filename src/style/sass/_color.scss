@@ -4,6 +4,7 @@ $color-dark-primary : #0097A7;
 $color-primary : #00BCD4;
 $color-secondary: #FF5252;
 $color-background: linear-gradient(to bottom, $color-dark-primary , $color-primary) !important;
+$color-white: #FFFFFF;
 
 .color-primary{
   color: $color-primary !important;
@@ -11,4 +12,9 @@ $color-background: linear-gradient(to bottom, $color-dark-primary , $color-prima
 
 .color-secondary{
   color: $color-secondary !important;
+}
+
+.color-white{
+  color: $color-white !important;
+  opacity: 1 !important;
 }

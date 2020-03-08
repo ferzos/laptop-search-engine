@@ -30,13 +30,15 @@ const VerticalStepper = ({
     let description;
 
     if (key === 'Processor') description = app.processor.sort().join(', ');
-    if (key === 'Ram') description = app.ram.sort().join(', ');
+    if (key === 'Ram') description = app.ram.sort((a, b) => a - b).join(', ');
     if (key === 'GPU' && app.vgaBrand.length)
       description = `${app.vgaBrand}${
         app.vgaVersion.length ? ':' : ''
       } ${app.vgaVersion.sort().join(', ')}`;
     if (key === 'Storage')
-      description = `${app.storage.sort().join(', ')}${app.ssd ? ', ssd' : ''}`;
+      description = `${app.storage.sort((a, b) => a - b).join(', ')}${
+        app.ssd ? ', ssd' : ''
+      }`;
     if (key === 'Brand') description = app.brand.sort().join(', ');
     if (key === 'Price') description = price ? formatCurrency(price) : '';
 

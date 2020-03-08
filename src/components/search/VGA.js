@@ -77,7 +77,7 @@ class VGA extends Component {
   render = () => (
     <Grid centered container stackable>
       <Grid.Row>
-        <Grid.Column width={8}>
+        <Grid.Column width={6}>
           <Segment basic vertical>
             <Header
               as="h2"
@@ -160,7 +160,7 @@ class VGA extends Component {
             </Grid>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={8}>
+        <Grid.Column width={10}>
           <Segment basic>
             <Header as="h2" content="GPU" className="text-bold" size="huge" />
             <p className="text-lg">

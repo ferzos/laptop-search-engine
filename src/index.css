@@ -519,6 +519,10 @@ a {
 .result .grid .cards .card .content .header {
   overflow-wrap: break-word;
 }
+.result .grid .cards .card .image-icon {
+  width: 14px;
+  height: 14px;
+}
 
 .about .grid {
   padding-top: 5rem !important;

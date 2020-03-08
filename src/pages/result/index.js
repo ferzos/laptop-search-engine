@@ -1,13 +1,13 @@
-// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import * as Icons from '@fortawesome/fontawesome-free-solid';
-// import logo from '../assets/logo.svg';
 import React, { Component } from 'react';
-import { Grid, Card, Icon, Header, Loader } from 'semantic-ui-react';
+import { Grid, Card, Icon, Header, Loader, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
 import ResponsiveContainer from '../../components/ResponsiveContainer';
+import TokopediaIcon from '../../assets/tokopedia.png';
+import BukalapakIcon from '../../assets/bukalapak.png';
+import ShopeeIcon from '../../assets/shopee.jpg';
 
 import { resetState } from '../../actions';
 
@@ -61,16 +61,29 @@ class Result extends Component {
             <Card.Content extra>
               <Icon name="industry" /> {brand} <br />
               <Icon name="money" /> {this.formatCurrency(price)} <br />
-              <Icon name="warehouse" />
+              <br />
+              Cari di:
+              <br />
+              <Image
+                className="image-icon"
+                src={TokopediaIcon}
+                alt="tokopedia"
+              />
               <a href={this.buildTokopediaLink(name)} target="_blank">
                 {' '}
-                Cari di Tokopedia{' '}
+                Tokopedia{' '}
               </a>{' '}
               <br />
-              <Icon name="warehouse" />
+              <Image src={BukalapakIcon} alt="bukalapak" />
               <a href={this.buildBukalapakLink(name)} target="_blank">
                 {' '}
-                Cari di Bukalapak{' '}
+                Bukalapak{' '}
+              </a>{' '}
+              <br />
+              <Image className="image-icon" src={ShopeeIcon} alt="shopee" />
+              <a href={this.buildShopeeLink(name)} target="_blank">
+                {' '}
+                Shopee{' '}
               </a>{' '}
               <br />
             </Card.Content>
@@ -123,6 +136,10 @@ class Result extends Component {
     )}`;
   }
 
+  buildShopeeLink(name) {
+    return `https://shopee.co.id/search/?keyword=${name.replace(/ /g, '+')}`;
+  }
+
   render = () => (
     <div className="result">
       <ResponsiveContainer>
@@ -146,7 +163,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Result);
+export default connect(mapStateToProps, mapDispatchToProps)(Result);

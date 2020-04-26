@@ -26,8 +26,14 @@ class Result extends Component {
 
   componentDidMount() {
     const self = this;
+  
+    const { ssd, ...spec } = this.props.app
+
     axios
-      .get(this.API, { params: this.props.app })
+      .get(this.API, { params: {
+        ...spec,
+        ...(ssd && { ssd: true })
+      }})
       .then(function(response) {
         if (response.data.length > 0) {
           self.setState({ data: response.data });

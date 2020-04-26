@@ -6,6 +6,14 @@ import { bindActionCreators } from 'redux';
 import ProcessorImage from '../../assets/processor.jpg';
 import { selectProcessor } from '../../actions';
 
+const processorOptions = [
+  {label: "Intel i3", id: 'i3'},
+  {label: "Intel i5", id: 'i5'},
+  {label: "Intel i7", id: 'i7'},
+  {label: "Intel i9", id: 'i9'},
+  {label: "AMD", id: 'amd'}, 
+]
+
 class Processor extends Component {
   handleButton = data => {
     let newChosen = this.props.app.processor.slice();
@@ -30,38 +38,18 @@ class Processor extends Component {
               className="text-bold"
               size="large"
             />
-            <Checkbox
-              checked={this.props.app.processor.includes('i3')}
-              label="Intel i3"
-              toggle
-              onClick={() => this.handleButton('i3')}
-            />
-            <br />
-            <br />
-            <Checkbox
-              checked={this.props.app.processor.includes('i5')}
-              label="Intel i5"
-              toggle
-              onClick={() => this.handleButton('i5')}
-            />
-            <br />
-            <br />
-            <Checkbox
-              checked={this.props.app.processor.includes('i7')}
-              label="Intel i7"
-              toggle
-              onClick={() => this.handleButton('i7')}
-            />
-            <br />
-            <br />
-            <Checkbox
-              checked={this.props.app.processor.includes('amd')}
-              label="AMD"
-              toggle
-              onClick={() => this.handleButton('amd')}
-            />
-            <br />
-            <br />
+            {processorOptions.map(({ label, id }) => (
+              <React.Fragment>
+              <Checkbox
+                checked={this.props.app.processor.includes(id)}
+                label={label}
+                toggle
+                onClick={() => this.handleButton(id)}
+              />
+              <br />
+              <br />
+              </React.Fragment>
+            ))}
           </Segment>
         </Grid.Column>
         <Grid.Column width={11}>

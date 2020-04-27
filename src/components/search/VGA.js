@@ -6,39 +6,54 @@ import { bindActionCreators } from 'redux';
 import GPUImage from '../../assets/gpu.png';
 import { selectGPUBrand, selectGPUVersion } from '../../actions';
 
+const radeonOptions = [
+  { label: 'Radeon R5', id: 'r5' },
+  { label: 'Radeon R6', id: 'r6' },
+  { label: 'Radeon R7', id: 'r7' },
+  { label: 'Radeon R8', id: 'r8' },
+  { label: 'Radeon Pro', id: 'pro' },
+];
+
+const nvidiaOptions = [
+  { label: 'Nvidia GT', id: 'gt' },
+  { label: 'Nvidia GTX', id: 'gtx' },
+  { label: 'Nvidia RTX', id: 'rtx' },
+];
+
 class VGA extends Component {
   noAMD = () => {
     const { vgaVersion } = this.props.app;
 
-    return (
-      !vgaVersion.includes('r5') &&
-      !vgaVersion.includes('r6') &&
-      !vgaVersion.includes('r7') &&
-      !vgaVersion.includes('r8')
-    );
+    return radeonOptions
+      .map(nvidia => !vgaVersion.includes(nvidia.id))
+      .reduce((acc, curr) => acc && curr, true);
   };
 
   noNvidia = () => {
     const { vgaVersion } = this.props.app;
 
-    return !vgaVersion.includes('gt') && !vgaVersion.includes('gtx');
+    return nvidiaOptions
+      .map(nvidia => !vgaVersion.includes(nvidia.id))
+      .reduce((acc, curr) => acc && curr, true);
   };
 
   getFilteredGPUVersion = brand => {
     if (brand === 'amd') {
       return this.props.app.vgaVersion
         .slice()
-        .filter(
-          version =>
-            version !== 'r5' &&
-            version !== 'r6' &&
-            version !== 'r7' &&
-            version !== 'r8'
+        .filter(version =>
+          radeonOptions
+            .map(({ id }) => version !== id)
+            .reduce((acc, curr) => acc && curr, true)
         );
     } else if (brand === 'nvidia') {
       return this.props.app.vgaVersion
         .slice()
-        .filter(version => version !== 'gt' && version !== 'gtx');
+        .filter(version =>
+          nvidiaOptions
+            .map(({ id }) => version !== id)
+            .reduce((acc, curr) => acc && curr, true)
+        );
     }
   };
 
@@ -88,38 +103,18 @@ class VGA extends Component {
             <Grid centered container stackable>
               <Grid.Row>
                 <Grid.Column width={8}>
-                  <Checkbox
-                    checked={this.props.app.vgaVersion.includes('r5')}
-                    label="Radeon R5"
-                    toggle
-                    onClick={this.handleButton('amd', 'r5')}
-                  />
-                  <br />
-                  <br />
-                  <Checkbox
-                    checked={this.props.app.vgaVersion.includes('r6')}
-                    label="Radeon R6"
-                    toggle
-                    onClick={this.handleButton('amd', 'r6')}
-                  />
-                  <br />
-                  <br />
-                  <Checkbox
-                    checked={this.props.app.vgaVersion.includes('r7')}
-                    label="Radeon R7"
-                    toggle
-                    onClick={this.handleButton('amd', 'r7')}
-                  />
-                  <br />
-                  <br />
-                  <Checkbox
-                    checked={this.props.app.vgaVersion.includes('r8')}
-                    label="Radeon R8"
-                    toggle
-                    onClick={this.handleButton('amd', 'r8')}
-                  />
-                  <br />
-                  <br />
+                  {radeonOptions.map(({ label, id }) => (
+                    <React.Fragment>
+                      <Checkbox
+                        checked={this.props.app.vgaVersion.includes(id)}
+                        label={label}
+                        toggle
+                        onClick={this.handleButton('amd', id)}
+                      />
+                      <br />
+                      <br />
+                    </React.Fragment>
+                  ))}
                   <Checkbox
                     checked={
                       this.props.app.vgaBrand.includes('amd') && this.noAMD()
@@ -130,22 +125,18 @@ class VGA extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column width={8}>
-                  <Checkbox
-                    checked={this.props.app.vgaVersion.includes('gt')}
-                    label="Nvidia GT"
-                    toggle
-                    onClick={this.handleButton('nvidia', 'gt')}
-                  />
-                  <br />
-                  <br />
-                  <Checkbox
-                    checked={this.props.app.vgaVersion.includes('gtx')}
-                    label="Nvidia GTX"
-                    toggle
-                    onClick={this.handleButton('nvidia', 'gtx')}
-                  />
-                  <br />
-                  <br />
+                  {nvidiaOptions.map(({ label, id }) => (
+                    <React.Fragment>
+                      <Checkbox
+                        checked={this.props.app.vgaVersion.includes(id)}
+                        label={label}
+                        toggle
+                        onClick={this.handleButton('nvidia', id)}
+                      />
+                      <br />
+                      <br />
+                    </React.Fragment>
+                  ))}
                   <Checkbox
                     checked={
                       this.props.app.vgaBrand.includes('nvidia') &&

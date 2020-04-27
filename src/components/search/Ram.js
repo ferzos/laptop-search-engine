@@ -6,6 +6,15 @@ import { bindActionCreators } from 'redux';
 import RamImage from '../../assets/ram.png';
 import { selectRam } from '../../actions';
 
+const ramOptions = [
+  { label: '2GB', id: 2 },
+  { label: '4GB', id: 4 },
+  { label: '8GB', id: 8 },
+  { label: '16GB', id: 16 },
+  { label: '32GB', id: 32 },
+  { label: '64GB', id: 64 },
+];
+
 class Ram extends Component {
   handleButton = data => {
     let newChosen = this.props.app.ram.slice();
@@ -30,38 +39,18 @@ class Ram extends Component {
               className="text-bold"
               size="large"
             />
-            <Checkbox
-              toggle
-              checked={this.props.app.ram.includes(2)}
-              label="2 GB"
-              onClick={() => this.handleButton(2)}
-            />
-            <br />
-            <br />
-            <Checkbox
-              toggle
-              checked={this.props.app.ram.includes(4)}
-              label="4 GB"
-              onClick={() => this.handleButton(4)}
-            />
-            <br />
-            <br />
-            <Checkbox
-              toggle
-              checked={this.props.app.ram.includes(8)}
-              label="8 GB"
-              onClick={() => this.handleButton(8)}
-            />
-            <br />
-            <br />
-            <Checkbox
-              toggle
-              checked={this.props.app.ram.includes(16)}
-              label="16 GB"
-              onClick={() => this.handleButton(16)}
-            />
-            <br />
-            <br />
+            {ramOptions.map(({ label, id }) => (
+              <React.Fragment>
+                <Checkbox
+                  toggle
+                  checked={this.props.app.ram.includes(id)}
+                  label={label}
+                  onClick={() => this.handleButton(id)}
+                />
+                <br />
+                <br />
+              </React.Fragment>
+            ))}
           </Segment>
         </Grid.Column>
         <Grid.Column width={11}>

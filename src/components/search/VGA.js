@@ -12,6 +12,7 @@ const radeonOptions = [
   { label: 'Radeon R7', id: 'r7' },
   { label: 'Radeon R8', id: 'r8' },
   { label: 'Radeon Pro', id: 'pro' },
+  { label: 'Radeon RX', id: 'rx' }
 ];
 
 const nvidiaOptions = [
